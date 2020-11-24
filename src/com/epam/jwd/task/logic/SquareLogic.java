@@ -1,7 +1,7 @@
 package com.epam.jwd.task.logic;
 
 import com.epam.jwd.task.model.Square;
-import com.epam.jwd.task.model.Triangle;
+import com.epam.jwd.task.model.Point;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Level;
@@ -11,11 +11,17 @@ public class SquareLogic {
 
     private static final Logger LOGGER = LogManager.getLogger(SquareLogic.class);
 
+    private static double squarePointsDestination(Point p1, Point p2) {
+        double xDestination = Math.abs(p1.getX()- p2.getX());
+        double yDestination = Math.abs(p1.getY() - p2.getY());
+        return Math.pow(xDestination, 2) + Math.pow(yDestination, 2);
+    }
+
     public static double[] destinationsFromOnePoint(Square square) {
         double[] sides = new double[3];
-        sides[0] = PointLogic.squarePointsDestination(square.getPoints()[0], square.getPoints()[1]);
-        sides[1] = PointLogic.squarePointsDestination(square.getPoints()[0], square.getPoints()[2]);
-        sides[2] = PointLogic.squarePointsDestination(square.getPoints()[0], square.getPoints()[3]);
+        sides[0] = SquareLogic.squarePointsDestination(square.getPoints()[0], square.getPoints()[1]);
+        sides[1] = SquareLogic.squarePointsDestination(square.getPoints()[0], square.getPoints()[2]);
+        sides[2] = SquareLogic.squarePointsDestination(square.getPoints()[0], square.getPoints()[3]);
         return sides;
     }
 
@@ -33,25 +39,20 @@ public class SquareLogic {
         double[] sides = SquareLogic.destinationsFromOnePoint(square);
 
         if (sides[0] == sides[1] && 2.0 * sides[0] == sides[2]
-                && 2.0 * PointLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[3]) ==
-                PointLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[2])){
+                && 2.0 * SquareLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[3]) ==
+                SquareLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[2])){
             return true;
         }
 
-
-        // LOOK!!!
         if (sides[1] == sides[2] && 2.0 * sides[1] == sides[0]
-                && 2.0 * PointLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[2]) ==
-                PointLogic.squarePointsDestination(square.getPoints()[2], square.getPoints()[3])){
+                && 2.0 * SquareLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[2]) ==
+                SquareLogic.squarePointsDestination(square.getPoints()[2], square.getPoints()[3])){
             return true;
         }
-        //////
-
-
 
         if (sides[0] == sides[2] && 2.0 * sides[0] == sides[1]
-                && 2.0 * PointLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[2]) ==
-                PointLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[3])){
+                && 2.0 * SquareLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[2]) ==
+                SquareLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[3])){
             return true;
         }
         return false;

@@ -36,18 +36,12 @@ public class Main {
 
     private static Square[] createSquares(){
         Square[] squares = new Square[1];
-//        squares[0] = new Square(new Point(0, 0.3), new Point(2.93, -6.6),
-//                new Point(2, 0.99), new Point(-8.5, 4.32));
-
-
-        squares[0] = new Square(new Point(20, 10), new Point(10, 20),
-                new Point(20, 20), new Point(10, 10));
+        squares[0] = new Square(new Point(2.4, 3.1), new Point(3.1, 2.4),
+                new Point(2.4, 2.4), new Point(3.1, 3.1));
         return squares;
     }
 
-
     public static void main(String[] args) {
-
         PointLogic.printPoints(createPoints());
         LineLogic.printLines(createLines());
         TriangleLogic.printTriangles(createTriangles());

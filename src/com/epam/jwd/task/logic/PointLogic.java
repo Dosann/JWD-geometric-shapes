@@ -15,10 +15,6 @@ public class PointLogic {
         return Math.hypot(xDestination, yDestination);
     }
 
-    public static double squarePointsDestination(Point p1, Point p2) {
-        return Math.pow(pointsDestination(p1, p2), 2);
-    }
-
     public static void printPoints(Point[] points) {
         int iterator = 0;
         do {
