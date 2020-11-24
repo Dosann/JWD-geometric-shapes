@@ -1,5 +1,5 @@
 package com.epam.jwd.task.app;
-;
+
 import com.epam.jwd.task.logic.LineLogic;
 import com.epam.jwd.task.logic.PointLogic;
 import com.epam.jwd.task.logic.SquareLogic;
