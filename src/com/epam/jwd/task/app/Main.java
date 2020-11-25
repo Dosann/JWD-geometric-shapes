@@ -30,7 +30,7 @@ public class Main {
     private static Triangle[] createTriangles(){
         Triangle[] triangles = new Triangle[2];
         triangles[0] = new Triangle(new Point(0, 0.3), new Point(9, -3.6), new Point(3.0, -8.43));
-        triangles[1] = new Triangle(new Point(0, 0.3), new Point(9, -3.6), new Point(0, 0.3));
+        triangles[1] = new Triangle(new Point(0, 0), new Point(1.5, -3.6), new Point(-1.5, 3.6));
         return triangles;
     }
 
