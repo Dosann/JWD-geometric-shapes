@@ -19,13 +19,12 @@ public class SquareLogic {
     }
 
     public static boolean isSquare(Square square) {
-        double[] sides = SquareLogic.destinationsFromOnePoint(square);
-        for (double side : sides) {
-            if(side == 0){
-                return false;
-            }
-        }
-        return true;
+        return !(square.getPoints()[0].equals(square.getPoints()[1]) ||
+                square.getPoints()[0].equals(square.getPoints()[2]) ||
+                square.getPoints()[0].equals(square.getPoints()[3]) ||
+                square.getPoints()[1].equals(square.getPoints()[2]) ||
+                square.getPoints()[1].equals(square.getPoints()[3]) ||
+                square.getPoints()[2].equals(square.getPoints()[3]));
     }
 
     public static boolean isExist(Square square) {
