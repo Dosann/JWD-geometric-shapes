@@ -17,7 +17,4 @@ public class Figure {
     public double calculatePerimeter() {
         return strategy.calculatePerimeter(points);
     }
-
-
-
 }
