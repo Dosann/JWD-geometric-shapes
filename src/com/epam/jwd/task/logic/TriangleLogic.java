@@ -4,6 +4,7 @@ import com.epam.jwd.task.model.Triangle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Level;
+import com.epam.jwd.task.strategy.Figure;
 
 public class TriangleLogic {
 
@@ -36,11 +37,13 @@ public class TriangleLogic {
                 (!TriangleLogic.isPointsLieOnStraightLine(triangle));
     }
 
-    public static void printTriangles(Triangle[] triangles) {
+    public static void printTriangles(Figure[] figures) {
+        Triangle[] triangles = (Triangle[])figures;
         for (Triangle triangle : triangles) {
             if (TriangleLogic.isTriangle(triangle)) {
                 if (TriangleLogic.isExist(triangle)) {
-                    LOGGER.log(Level.INFO, "{}", triangle);
+                    LOGGER.log(Level.INFO, "{}\nPerimeter = {}\nArea = {}", triangle,
+                            triangle.calculatePerimeter(), triangle.calculateArea());
                 } else {
                     LOGGER.log(Level.ERROR, "{} can't exist", triangle);
                 }

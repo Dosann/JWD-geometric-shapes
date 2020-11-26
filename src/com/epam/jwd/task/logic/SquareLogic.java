@@ -4,6 +4,7 @@ import com.epam.jwd.task.model.Square;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Level;
+import com.epam.jwd.task.strategy.Figure;
 
 
 public class SquareLogic {
@@ -50,7 +51,8 @@ public class SquareLogic {
         return false;
     }
 
-    public static void printSquares(Square[] squares){
+    public static void printSquares(Figure[] figures){
+        Square[] squares = (Square[]) figures;
         for (Square square : squares) {
             if (SquareLogic.isSquare(square)) {
                 if (SquareLogic.isExist(square)) {

@@ -1,11 +1,15 @@
 package com.epam.jwd.task.model;
 
 import com.epam.jwd.task.logic.PointLogic;
+import com.epam.jwd.task.strategy.Figure;
+import com.epam.jwd.task.strategy.FigurePropertiesStrategy;
+import com.epam.jwd.task.strategy.TrianglePropertiesStrategy;
 
 import java.util.Arrays;
 
-public class Triangle {
+public class Triangle extends Figure {
     private Point[] points;
+//    public static FigurePropertiesStrategy strategy = TrianglePropertiesStrategy.getInstance();
 
     public Point[] getPoints() {
         return points;
@@ -15,16 +19,14 @@ public class Triangle {
         this.points = points;
     }
 
-    public Triangle(Point p1, Point p2, Point p3) {
-        initialize(p1, p2, p3);
+    public Triangle(Point[] points) {
+        super(points);
+        this.points = points;
     }
 
-    private void initialize(Point p1, Point p2, Point p3) {
-        points = new Point[3];
-        points[0] = new Point(p1.getX(), p1.getY());
-        points[1] = new Point(p2.getX(), p2.getY());
-        points[2] = new Point(p3.getX(), p3.getY());
-    }
+//    public Triangle(FigurePropertiesStrategy figurePropertiesStrategy, Point[] points) {
+//        super(figurePropertiesStrategy, points);
+//    }
 
     @Override
     public String toString() {

@@ -1,9 +1,14 @@
 package com.epam.jwd.task.model;
 
+import com.epam.jwd.task.strategy.Figure;
+import com.epam.jwd.task.strategy.FigurePropertiesStrategy;
+import com.epam.jwd.task.strategy.LinePropertiesStrategy;
+
 import java.util.Arrays;
 
-public class Line {
+public class Line extends Figure {
     private Point[] points;
+//    public static FigurePropertiesStrategy strategy = LinePropertiesStrategy.INSTANCE;
 
     public Point[] getPoints() {
         return points;
@@ -13,15 +18,18 @@ public class Line {
         this.points = points;
     }
 
-    public Line(Point p1, Point p2){
-        initialize(p1, p2);
+    public Line(Point[] points){
+        super(points);
+        this.points = points;
+//        this.points = new Point[2];
+//        for(int i = 0; i < 2; i++){
+//            this.points[i] = points[i];
+//        }
     }
 
-    private void initialize(Point p1, Point p2) {
-        points = new Point[2];
-        points[0] = new Point(p1.getX(), p1.getY());
-        points[1] = new Point(p2.getX(), p2.getY());
-    }
+//    public Line(FigurePropertiesStrategy figurePropertiesStrategy, Point[] points) {
+//        super(figurePropertiesStrategy, points);
+//    }
 
     @Override
     public String toString() {

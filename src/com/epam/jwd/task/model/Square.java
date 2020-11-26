@@ -1,9 +1,14 @@
 package com.epam.jwd.task.model;
 
+import com.epam.jwd.task.strategy.Figure;
+import com.epam.jwd.task.strategy.FigurePropertiesStrategy;
+import com.epam.jwd.task.strategy.SquarePropertiesStrategy;
+
 import java.util.Arrays;
 
-public class Square {
+public class Square extends Figure {
     private Point[] points;
+//    public static FigurePropertiesStrategy strategy = SquarePropertiesStrategy.getInstance();
 
     public Point[] getPoints() {
         return points;
@@ -13,17 +18,14 @@ public class Square {
         this.points = points;
     }
 
-    public Square(Point p1, Point p2, Point p3, Point p4) {
-        initialize(p1, p2, p3, p4);
+    public Square(Point[] points) {
+        super(points);
+        this.points = points;
     }
 
-    private void initialize(Point p1, Point p2, Point p3, Point p4) {
-        points = new Point[4];
-        points[0] = new Point(p1.getX(), p1.getY());
-        points[1] = new Point(p2.getX(), p2.getY());
-        points[2] = new Point(p3.getX(), p3.getY());
-        points[3] = new Point(p4.getX(), p4.getY());
-    }
+//    public Square(FigurePropertiesStrategy figurePropertiesStrategy, Point[] points) {
+//        super(figurePropertiesStrategy, points);
+//    }
 
     @Override
     public String toString() {
