@@ -97,6 +97,5 @@ public class Main {
         TriangleLogic.printTriangles(TRIANGLES);
         SquareLogic.printSquares(SQUARES);
         MultiAngleFigureLogic.printMultiAngles(MULTI_ANGLE_FIGURES);
-
     }
 }
