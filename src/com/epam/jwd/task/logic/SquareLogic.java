@@ -20,12 +20,14 @@ public class SquareLogic {
     }
 
     public static boolean isSquare(Square square) {
-        return !(square.getPoints()[0].equals(square.getPoints()[1]) ||
-                square.getPoints()[0].equals(square.getPoints()[2]) ||
-                square.getPoints()[0].equals(square.getPoints()[3]) ||
-                square.getPoints()[1].equals(square.getPoints()[2]) ||
-                square.getPoints()[1].equals(square.getPoints()[3]) ||
-                square.getPoints()[2].equals(square.getPoints()[3]));
+        for(int i = 0; i < square.getPoints().length; i++) {
+            for (int j = i + 1; j < square.getPoints().length; j++) {
+                if (square.getPoints()[i].equals(square.getPoints()[j])) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public static boolean isExist(Square square) {
@@ -56,7 +58,9 @@ public class SquareLogic {
         for (Square square : squares) {
             if (SquareLogic.isSquare(square)) {
                 if (SquareLogic.isExist(square)) {
-                    LOGGER.log(Level.INFO, "{}", square);
+                    square.setSquareStrategy();
+                    LOGGER.log(Level.INFO, "{}\nPerimeter = {}\nArea = {}", square,
+                            square.calculatePerimeter(), square.calculateArea());
                 } else {
                     LOGGER.log(Level.ERROR, "{} can't exist", square);
                 }

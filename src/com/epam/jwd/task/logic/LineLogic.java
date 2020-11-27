@@ -18,7 +18,7 @@ public class LineLogic {
         Line[] lines = (Line[])figures;
         for (Line line : lines) {
             if (LineLogic.isLine(line)) {
-                LOGGER.log(Level.INFO, "{}\nPerimeter = {}\nArea = {}", line,
+                LOGGER.log(Level.INFO, "{}\nLength = {}\nArea = {}", line,
                         line.calculatePerimeter(), line.calculateArea());
             } else {
                 LOGGER.log(Level.ERROR, "Object {} can't be a line!", line);

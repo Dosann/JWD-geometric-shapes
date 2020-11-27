@@ -42,6 +42,7 @@ public class TriangleLogic {
         for (Triangle triangle : triangles) {
             if (TriangleLogic.isTriangle(triangle)) {
                 if (TriangleLogic.isExist(triangle)) {
+                    triangle.setTriangleStrategy();
                     LOGGER.log(Level.INFO, "{}\nPerimeter = {}\nArea = {}", triangle,
                             triangle.calculatePerimeter(), triangle.calculateArea());
                 } else {
