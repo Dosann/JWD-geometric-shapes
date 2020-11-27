@@ -17,11 +17,11 @@ public class Figure {
     }
 
     public void setTriangleStrategy(){
-        this.strategy = new TrianglePropertiesStrategy();
+        this.strategy = TrianglePropertiesStrategy.getInstance();
     }
 
     public void setSquareStrategy(){
-        this.strategy = new SquarePropertiesStrategy();
+        this.strategy = SquarePropertiesStrategy.getInstance();
     }
 
     public double calculateArea() {
