@@ -14,14 +14,20 @@ public class LineLogic {
         return !line.getPoints()[0].equals(line.getPoints()[1]);
     }
 
+    private static void showInfoAboutLine(Line line) {
+        if (LineLogic.isLine(line)) {
+            LOGGER.log(Level.INFO, "{}\nLength = {}\nArea = {}", line,
+                    line.calculatePerimeter(), line.calculateArea());
+        } else {
+            LOGGER.log(Level.ERROR, "Object {} can't be a line!", line);
+        }
+    }
+
     public static void printLines(Figure[] figures) {
-        Line[] lines = (Line[])figures;
-        for (Line line : lines) {
-            if (LineLogic.isLine(line)) {
-                LOGGER.log(Level.INFO, "{}\nLength = {}\nArea = {}", line,
-                        line.calculatePerimeter(), line.calculateArea());
-            } else {
-                LOGGER.log(Level.ERROR, "Object {} can't be a line!", line);
+        for (Figure figure : figures) {
+            if (figure instanceof Line) {
+                Line line = (Line)figure;
+                LineLogic.showInfoAboutLine(line);
             }
         }
     }

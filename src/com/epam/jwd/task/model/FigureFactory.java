@@ -8,10 +8,10 @@ public class FigureFactory {
     private static int amountOfFigures = 0;
 
     private static Line createLine(Point[] points){
-        for (Figure figure : createdFigures){
-            if(figure instanceof Line){
+        for (Figure figure : createdFigures) {
+            if (figure instanceof Line) {
                 Line line = (Line) figure;
-                if(line.getPoints() == points) {
+                if (line.getPoints() == points) {
                     return line;
                 }
             }
@@ -21,15 +21,11 @@ public class FigureFactory {
         return line;
     }
 
-    public static Line buildLine(Point[] points){
-        return createLine(points);
-    }
-
     private static Triangle createTriangle(Point[] points){
-        for (Figure figure : createdFigures){
-            if(figure instanceof Triangle){
+        for (Figure figure : createdFigures) {
+            if (figure instanceof Triangle) {
                 Triangle triangle = (Triangle) figure;
-                if(triangle.getPoints() == points) {
+                if (triangle.getPoints() == points) {
                     return triangle;
                 }
             }
@@ -39,15 +35,11 @@ public class FigureFactory {
         return triangle;
     }
 
-    public static Triangle buildTriangle(Point[] points){
-        return createTriangle(points);
-    }
-
     private static Square createSquare(Point[] points){
-        for (Figure figure : createdFigures){
-            if(figure instanceof Square){
+        for (Figure figure : createdFigures) {
+            if (figure instanceof Square) {
                 Square square = (Square) figure;
-                if(square.getPoints() == points) {
+                if (square.getPoints() == points) {
                     return square;
                 }
             }
@@ -57,15 +49,11 @@ public class FigureFactory {
         return square;
     }
 
-    public static Square buildSquare(Point[] points){
-        return createSquare(points);
-    }
-
     private static MultiAngleFigure createMultiAngles(Point[] points){
-        for (Figure figure : createdFigures){
-            if(figure instanceof MultiAngleFigure){
+        for (Figure figure : createdFigures) {
+            if (figure instanceof MultiAngleFigure) {
                 MultiAngleFigure multiAngle = (MultiAngleFigure) figure;
-                if(multiAngle.getPoints() == points) {
+                if (multiAngle.getPoints() == points) {
                     return multiAngle;
                 }
             }
@@ -75,8 +63,16 @@ public class FigureFactory {
         return multiAngle;
     }
 
-    public static MultiAngleFigure buildMultiAngles(Point[] points){
-        return createMultiAngles(points);
+    public static Figure buildFigure(String type, Point[] points) {
+        switch (type) {
+            case "Line":
+                return createLine(points);
+            case "Triangle":
+                return createTriangle(points);
+            case "Square":
+                return createSquare(points);
+            default:
+                return createMultiAngles(points);
+        }
     }
-
 }

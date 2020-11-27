@@ -53,19 +53,25 @@ public class SquareLogic {
         return false;
     }
 
-    public static void printSquares(Figure[] figures){
-        Square[] squares = (Square[]) figures;
-        for (Square square : squares) {
-            if (SquareLogic.isSquare(square)) {
-                if (SquareLogic.isExist(square)) {
-                    square.setSquareStrategy();
-                    LOGGER.log(Level.INFO, "{}\nPerimeter = {}\nArea = {}", square,
-                            square.calculatePerimeter(), square.calculateArea());
-                } else {
-                    LOGGER.log(Level.ERROR, "{} can't exist", square);
-                }
+    private static void showInfoAboutSquare(Square square) {
+        if (SquareLogic.isSquare(square)) {
+            if (SquareLogic.isExist(square)) {
+                square.setSquareStrategy();
+                LOGGER.log(Level.INFO, "{}\nPerimeter = {}\nArea = {}", square,
+                        square.calculatePerimeter(), square.calculateArea());
             } else {
-                LOGGER.log(Level.ERROR, "Object {} can't be a square!", square);
+                LOGGER.log(Level.ERROR, "{} can't exist", square);
+            }
+        } else {
+            LOGGER.log(Level.ERROR, "Object {} can't be a square!", square);
+        }
+    }
+
+    public static void printSquares(Figure[] figures){
+        for (Figure figure : figures) {
+            if (figure instanceof Square) {
+                Square square = (Square) figure;
+                SquareLogic.showInfoAboutSquare(square);
             }
         }
     }
