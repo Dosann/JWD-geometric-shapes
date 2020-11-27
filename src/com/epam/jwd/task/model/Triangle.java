@@ -19,7 +19,7 @@ public class Triangle extends Figure {
         this.points = points;
     }
 
-    public Triangle(Point[] points) {
+    Triangle(Point[] points) {
         super(points);
         this.points = points;
     }

@@ -18,7 +18,7 @@ public class Square extends Figure {
         this.points = points;
     }
 
-    public Square(Point[] points) {
+    Square(Point[] points) {
         super(points);
         this.points = points;
     }
