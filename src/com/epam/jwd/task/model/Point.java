@@ -3,6 +3,7 @@ package com.epam.jwd.task.model;
 import java.util.Objects;
 
 public class Point {
+
     private double x;
     private double y;
 

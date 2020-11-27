@@ -5,6 +5,7 @@ import com.epam.jwd.task.strategy.Figure;
 import java.util.Arrays;
 
 public class Line extends Figure {
+
     private Point[] points;
 
     public Point[] getPoints() {

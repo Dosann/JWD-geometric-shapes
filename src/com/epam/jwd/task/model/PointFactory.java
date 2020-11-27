@@ -1,6 +1,7 @@
 package com.epam.jwd.task.model;
 
 public class PointFactory {
+
     private static Point[] createdPoints = new Point[42];
     private static int amountOfPoints = 0;
 

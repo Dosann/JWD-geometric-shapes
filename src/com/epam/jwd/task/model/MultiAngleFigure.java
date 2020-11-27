@@ -5,6 +5,7 @@ import com.epam.jwd.task.strategy.Figure;
 import java.util.Arrays;
 
 public class MultiAngleFigure extends Figure {
+
     private Point[] points;
 
     public Point[] getPoints() {
@@ -24,5 +25,4 @@ public class MultiAngleFigure extends Figure {
     public String toString() {
         return "Multi-angle figure{\n\t" + Arrays.toString(points) + "\n}";
     }
-
 }
