@@ -6,14 +6,10 @@ import java.util.Arrays;
 
 public class Square extends Figure {
 
-    private Point[] points;
+    private final Point[] points;
 
     public Point[] getPoints() {
         return points;
-    }
-
-    public void setPoints(Point[] points) {
-        this.points = points;
     }
 
     Square(Point[] points) {

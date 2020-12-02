@@ -4,21 +4,15 @@ import java.util.Objects;
 
 public class Point {
 
-    private double x;
-    private double y;
+    private final double x;
+    private final double y;
 
     public double getX() {
         return x;
     }
-    public void setX(double x) {
-        this.x = x;
-    }
 
     public double getY(){
         return y;
-    }
-    public void setY(double y) {
-        this.y = y;
     }
 
     Point(double x, double y) {
@@ -46,9 +40,6 @@ public class Point {
 
     @Override
     public String toString() {
-        return "Point {" +
-                "x = " + x +
-                ", y = " + y +
-                " }";
+        return "Point {" + "x = " + x + ", y = " + y + " }";
     }
 }

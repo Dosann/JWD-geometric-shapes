@@ -6,19 +6,15 @@ import java.util.Arrays;
 
 public class Triangle extends Figure {
 
-    private Point[] points;
+    private final Point[] points;
 
     public Point[] getPoints() {
         return points;
     }
 
-    public void setPoints(Point[] points) {
-        this.points = points;
-    }
-
     Triangle(Point[] points) {
         super(points);
-        this.points = points;
+       this.points = points;
     }
 
     @Override
