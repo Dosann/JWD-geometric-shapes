@@ -13,7 +13,6 @@ public class MultiAngleFigure extends Figure {
     }
 
     MultiAngleFigure(Point[] points) {
-        super(points);
         this.points = points;
     }
 

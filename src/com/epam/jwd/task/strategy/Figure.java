@@ -5,15 +5,9 @@ import com.epam.jwd.task.model.Point;
 public abstract class Figure {
 
     private FigurePropertiesStrategy strategy;
-    private final Point[] points;
 
-    public Point[] getPoints() {
-        return points;
-    }
-
-    public Figure(Point[] points) {
+    public Figure() {
         this.strategy = LinePropertiesStrategy.INSTANCE;
-        this.points = points;
     }
 
     public void setTriangleStrategy(){
@@ -24,10 +18,12 @@ public abstract class Figure {
         this.strategy = SquarePropertiesStrategy.getInstance();
     }
 
+    protected abstract Point[] getPoints();
+
     public double calculateArea() {
-        return strategy.calculateArea(points);
+        return strategy.calculateArea(getPoints());
     }
     public double calculatePerimeter() {
-        return strategy.calculatePerimeter(points);
+        return strategy.calculatePerimeter(getPoints());
     }
 }

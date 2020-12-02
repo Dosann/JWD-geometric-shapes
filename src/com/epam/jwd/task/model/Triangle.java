@@ -13,7 +13,6 @@ public class Triangle extends Figure {
     }
 
     Triangle(Point[] points) {
-        super(points);
        this.points = points;
     }
 

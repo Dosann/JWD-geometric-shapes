@@ -13,7 +13,6 @@ public class Line extends Figure {
     }
 
     Line(Point[] points){
-        super(points);
         this.points = points;
     }
 
