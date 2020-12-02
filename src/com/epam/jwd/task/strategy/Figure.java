@@ -2,10 +2,10 @@ package com.epam.jwd.task.strategy;
 
 import com.epam.jwd.task.model.Point;
 
-public class Figure {
+public abstract class Figure {
 
     private FigurePropertiesStrategy strategy;
-    private Point[] points;
+    private final Point[] points;
 
     public Point[] getPoints() {
         return points;
