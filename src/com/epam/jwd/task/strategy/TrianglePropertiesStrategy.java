@@ -3,7 +3,7 @@ package com.epam.jwd.task.strategy;
 import com.epam.jwd.task.model.Point;
 import com.epam.jwd.task.logic.PointLogic;
 
-public class TrianglePropertiesStrategy implements FigurePropertiesStrategy {
+public final class TrianglePropertiesStrategy implements FigurePropertiesStrategy {
 
     private static class TriangleHolder {
         private final static TrianglePropertiesStrategy INSTANCE = new TrianglePropertiesStrategy();

@@ -3,7 +3,7 @@ package com.epam.jwd.task.strategy;
 import com.epam.jwd.task.model.Point;
 import com.epam.jwd.task.logic.PointLogic;
 
-public class SquarePropertiesStrategy implements FigurePropertiesStrategy {
+public final class SquarePropertiesStrategy implements FigurePropertiesStrategy {
 
     private static SquarePropertiesStrategy instance;
 
