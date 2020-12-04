@@ -2,8 +2,8 @@
 
 ## Goals
 ### Learn how to 
-#### * implement pattern strategies: Strategy, Singleton, Factory
-#### * handle exceptions
+* implement pattern strategies: Strategy, Singleton, Factory
+* handle exceptions
 
 ## Process
 * In order to compile and run the app you need to download **Apache Log4j 2**  from the [original site](https://logging.apache.org/log4j/2.x/download.html).
