@@ -26,7 +26,7 @@ public class LineLogic {
     public static void printLines(Figure[] figures) {
         for (Figure figure : figures) {
             if (figure instanceof Line) {
-                Line line = (Line)figure;
+                Line line = (Line) figure;
                 LineLogic.showInfoAboutLine(line);
             }
         }

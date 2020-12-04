@@ -1,5 +1,6 @@
 package com.epam.jwd.task.model;
 
+import com.epam.jwd.task.exception.FigureNotExistException;
 import com.epam.jwd.task.strategy.Figure;
 
 public class FigureFactory {
@@ -62,8 +63,8 @@ public class FigureFactory {
         createdFigures[amountOfFigures++] = multiAngle;
         return multiAngle;
     }
-
-    public static Figure buildFigure(String type, Point[] points) {
+    
+    public static Figure buildFigure(String type, Point[] points) throws FigureNotExistException {
         switch (type) {
             case "Line":
                 return createLine(points);

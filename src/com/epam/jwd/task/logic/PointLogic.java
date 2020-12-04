@@ -14,7 +14,7 @@ public class PointLogic {
     }
 
     public static double squarePointsDestination(Point p1, Point p2) {
-        double xDestination = Math.abs(p1.getX()- p2.getX());
+        double xDestination = Math.abs(p1.getX() - p2.getX());
         double yDestination = Math.abs(p1.getY() - p2.getY());
         return Math.pow(xDestination, 2) + Math.pow(yDestination, 2);
     }
@@ -24,6 +24,6 @@ public class PointLogic {
         do {
             LOGGER.log(Level.INFO, "{}", points[iterator++]);
         }
-        while(iterator != points.length);
+        while (iterator != points.length);
     }
 }

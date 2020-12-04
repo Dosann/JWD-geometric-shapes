@@ -20,7 +20,7 @@ public class SquareLogic {
     }
 
     public static boolean isSquare(Square square) {
-        for(int i = 0; i < square.getPoints().length; i++) {
+        for (int i = 0; i < square.getPoints().length; i++) {
             for (int j = i + 1; j < square.getPoints().length; j++) {
                 if (square.getPoints()[i].equals(square.getPoints()[j])) {
                     return false;
@@ -35,22 +35,19 @@ public class SquareLogic {
 
         if (sides[0] == sides[1] && 2.0 * sides[0] == sides[2]
                 && 2.0 * PointLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[3]) ==
-                PointLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[2])){
+                PointLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[2])) {
             return true;
         }
 
         if (sides[1] == sides[2] && 2.0 * sides[1] == sides[0]
                 && 2.0 * PointLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[2]) ==
-                PointLogic.squarePointsDestination(square.getPoints()[2], square.getPoints()[3])){
+                PointLogic.squarePointsDestination(square.getPoints()[2], square.getPoints()[3])) {
             return true;
         }
 
-        if (sides[0] == sides[2] && 2.0 * sides[0] == sides[1]
+        return sides[0] == sides[2] && 2.0 * sides[0] == sides[1]
                 && 2.0 * PointLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[2]) ==
-                PointLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[3])){
-            return true;
-        }
-        return false;
+                PointLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[3]);
     }
 
     private static void showInfoAboutSquare(Square square) {
@@ -67,7 +64,7 @@ public class SquareLogic {
         }
     }
 
-    public static void printSquares(Figure[] figures){
+    public static void printSquares(Figure[] figures) {
         for (Figure figure : figures) {
             if (figure instanceof Square) {
                 Square square = (Square) figure;
