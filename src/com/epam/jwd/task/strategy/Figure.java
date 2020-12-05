@@ -10,11 +10,11 @@ public abstract class Figure {
         this.strategy = LinePropertiesStrategy.INSTANCE;
     }
 
-    public void setTriangleStrategy(){
+    public void setTriangleStrategy() {
         this.strategy = TrianglePropertiesStrategy.getInstance();
     }
 
-    public void setSquareStrategy(){
+    public void setSquareStrategy() {
         this.strategy = SquarePropertiesStrategy.getInstance();
     }
 
@@ -23,6 +23,7 @@ public abstract class Figure {
     public double calculateArea() {
         return strategy.calculateArea(getPoints());
     }
+
     public double calculatePerimeter() {
         return strategy.calculatePerimeter(getPoints());
     }

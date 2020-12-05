@@ -9,7 +9,7 @@ public enum LinePropertiesStrategy implements FigurePropertiesStrategy {
     @Override
     public double calculateArea(Point[] points) {
         return 0;
-    } 
+    }
 
     @Override
     public double calculatePerimeter(Point[] points) {

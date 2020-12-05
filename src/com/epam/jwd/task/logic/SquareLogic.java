@@ -19,17 +19,6 @@ public class SquareLogic {
         return sides;
     }
 
-    public static boolean isSquare(Square square) {
-        for (int i = 0; i < square.getPoints().length; i++) {
-            for (int j = i + 1; j < square.getPoints().length; j++) {
-                if (square.getPoints()[i].equals(square.getPoints()[j])) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
     public static boolean isExist(Square square) {
         double[] sides = SquareLogic.destinationsFromOnePoint(square);
 
@@ -50,25 +39,13 @@ public class SquareLogic {
                 PointLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[3]);
     }
 
-    private static void showInfoAboutSquare(Square square) {
-        if (SquareLogic.isSquare(square)) {
-            if (SquareLogic.isExist(square)) {
-                square.setSquareStrategy();
-                LOGGER.log(Level.INFO, "{}\nPerimeter = {}\nArea = {}", square,
-                        square.calculatePerimeter(), square.calculateArea());
-            } else {
-                LOGGER.log(Level.ERROR, "{} can't exist", square);
-            }
-        } else {
-            LOGGER.log(Level.ERROR, "Object {} can't be a square!", square);
-        }
-    }
-
     public static void printSquares(Figure[] figures) {
         for (Figure figure : figures) {
             if (figure instanceof Square) {
                 Square square = (Square) figure;
-                SquareLogic.showInfoAboutSquare(square);
+                square.setSquareStrategy();
+                LOGGER.log(Level.INFO, "{}\nPerimeter = {}\nArea = {}", square,
+                        square.calculatePerimeter(), square.calculateArea());
             }
         }
     }

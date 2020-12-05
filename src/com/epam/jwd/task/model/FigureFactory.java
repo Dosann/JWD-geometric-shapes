@@ -1,6 +1,10 @@
 package com.epam.jwd.task.model;
 
-import com.epam.jwd.task.exception.FigureNotExistException;
+import com.epam.jwd.task.exception.FigureException;
+import com.epam.jwd.task.service.FigurePostProcessor;
+import com.epam.jwd.task.service.FigurePreProcessor;
+import com.epam.jwd.task.service.impl.FigureExistencePostProcessor;
+import com.epam.jwd.task.service.impl.FigureExistencePreProcessor;
 import com.epam.jwd.task.strategy.Figure;
 
 public class FigureFactory {
@@ -50,7 +54,7 @@ public class FigureFactory {
         return square;
     }
 
-    private static MultiAngleFigure createMultiAngles(Point[] points){
+    private static MultiAngleFigure createMultiAngle(Point[] points){
         for (Figure figure : createdFigures) {
             if (figure instanceof MultiAngleFigure) {
                 MultiAngleFigure multiAngle = (MultiAngleFigure) figure;
@@ -63,17 +67,31 @@ public class FigureFactory {
         createdFigures[amountOfFigures++] = multiAngle;
         return multiAngle;
     }
-    
-    public static Figure buildFigure(String type, Point[] points) throws FigureNotExistException {
+
+    private static final FigurePreProcessor figurePreProcessor = new FigureExistencePreProcessor();
+    private static final FigurePostProcessor figurePostProcessor = new FigureExistencePostProcessor();
+
+
+    public static Figure buildFigure(String type, Point[] points) throws FigureException {
+        figurePreProcessor.process(points);
+        Figure figure;
+
         switch (type) {
             case "Line":
-                return createLine(points);
+                figure = createLine(points);
+                break;
             case "Triangle":
-                return createTriangle(points);
+                figure = createTriangle(points);
+                break;
             case "Square":
-                return createSquare(points);
+                figure = createSquare(points);
+                break;
             default:
-                return createMultiAngles(points);
+                figure = createMultiAngle(points);
+                break;
         }
+
+        figure = figurePostProcessor.process(figure);
+        return figure;
     }
 }
