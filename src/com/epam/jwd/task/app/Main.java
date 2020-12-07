@@ -26,9 +26,9 @@ public class Main {
     };
 
     private static final Point[] POINTS_FOR_FIRST_TRIANGLE = {
-            PointFactory.buildPoint(0, 0),
-            PointFactory.buildPoint(1, -1),
-            PointFactory.buildPoint(-1, 1)
+            PointFactory.buildPoint(-1, 3),
+            PointFactory.buildPoint(-1, 0),
+            PointFactory.buildPoint(3, 0)
     };
 
     private static final Point[] POINTS_FOR_SECOND_TRIANGLE = {
@@ -69,7 +69,6 @@ public class Main {
     };
 
     public static void main(String[] args) {
-
         generateInfoAboutLines();
         generateInfoAboutTriangles();
         generateInfoAboutSquares();
@@ -96,6 +95,7 @@ public class Main {
 
         try {
             triangles = new Figure[]{
+                    FigureFactory.buildFigure("Triangle", POINTS_FOR_SECOND_TRIANGLE),
                     FigureFactory.buildFigure("Triangle", POINTS_FOR_FIRST_TRIANGLE)
             };
         } catch (FigureException e) {
