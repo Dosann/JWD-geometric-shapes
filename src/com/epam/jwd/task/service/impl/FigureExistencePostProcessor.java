@@ -16,11 +16,13 @@ public class FigureExistencePostProcessor implements FigurePostProcessor {
     @Override
     public Figure process(Figure figure) throws FigureException {
         if (figure instanceof Triangle) {
-            FigureExistencePostProcessor.checkTriangleValidation(figure);
+            figure.setTriangleStrategy();
+            checkTriangleValidation(figure);
         } else if (figure instanceof Square) {
-            FigureExistencePostProcessor.checkSquareValidation(figure);
+            figure.setSquareStrategy();
+            checkSquareValidation(figure);
         } else if (figure instanceof MultiAngleFigure) {
-            FigureExistencePostProcessor.checkMultiAngleValidation(figure);
+            checkMultiAngleValidation(figure);
         }
         return figure;
     }
