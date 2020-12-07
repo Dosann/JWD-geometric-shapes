@@ -43,7 +43,6 @@ public class SquareLogic {
         for (Figure figure : figures) {
             if (figure instanceof Square) {
                 Square square = (Square) figure;
-                square.setSquareStrategy();
                 LOGGER.log(Level.INFO, "{}\nPerimeter = {}\nArea = {}", square,
                         square.calculatePerimeter(), square.calculateArea());
             }

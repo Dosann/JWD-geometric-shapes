@@ -14,7 +14,7 @@ public final class SquarePropertiesStrategy implements FigurePropertiesStrategy 
         return instance;
     }
 
-    private static double sideOfSquare(Point[] points) {
+    private static double defineSideOfSquare(Point[] points) {
         double firstSide = PointLogic.pointsDestination(points[0], points[1]);
         double secondSide = PointLogic.pointsDestination(points[0], points[2]);
         return Math.min(secondSide, firstSide);
@@ -22,11 +22,11 @@ public final class SquarePropertiesStrategy implements FigurePropertiesStrategy 
 
     @Override
     public double calculateArea(Point[] points) {
-        return Math.pow(sideOfSquare(points), 2);
+        return Math.pow(defineSideOfSquare(points), 2);
     }
 
     @Override
     public double calculatePerimeter(Point[] points) {
-        return 4 * sideOfSquare(points);
+        return 4 * defineSideOfSquare(points);
     }
 }
