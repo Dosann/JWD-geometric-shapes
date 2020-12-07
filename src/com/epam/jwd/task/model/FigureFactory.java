@@ -74,8 +74,8 @@ public class FigureFactory {
 
     public static Figure buildFigure(String type, Point[] points) throws FigureException {
         figurePreProcessor.process(points);
-        Figure figure;
 
+        Figure figure;
         switch (type) {
             case "Line":
                 figure = createLine(points);
