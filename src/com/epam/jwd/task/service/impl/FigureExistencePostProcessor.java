@@ -9,7 +9,7 @@ import com.epam.jwd.task.model.MultiAngleFigure;
 import com.epam.jwd.task.model.Square;
 import com.epam.jwd.task.model.Triangle;
 import com.epam.jwd.task.service.FigurePostProcessor;
-import com.epam.jwd.task.strategy.Figure;
+import com.epam.jwd.task.model.Figure;
 
 public class FigureExistencePostProcessor implements FigurePostProcessor {
 

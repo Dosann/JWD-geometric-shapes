@@ -1,6 +1,5 @@
 package com.epam.jwd.task.model;
 
-import com.epam.jwd.task.strategy.Figure;
 import java.util.Arrays;
 
 public class Triangle extends Figure {
@@ -11,7 +10,7 @@ public class Triangle extends Figure {
         return points;
     }
 
-    Triangle(Point[] points) {
+    public Triangle(Point[] points) {
        this.points = points;
     }
 

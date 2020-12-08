@@ -1,7 +1,5 @@
 package com.epam.jwd.task.model;
 
-import com.epam.jwd.task.strategy.Figure;
-
 import java.util.Arrays;
 
 public class MultiAngleFigure extends Figure {
@@ -12,7 +10,7 @@ public class MultiAngleFigure extends Figure {
         return points;
     }
 
-    MultiAngleFigure(Point[] points) {
+    public MultiAngleFigure(Point[] points) {
         this.points = points;
     }
 

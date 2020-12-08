@@ -1,6 +1,5 @@
 package com.epam.jwd.task.model;
 
-import com.epam.jwd.task.strategy.Figure;
 import java.util.Arrays;
 
 public class Line extends Figure {
@@ -11,7 +10,7 @@ public class Line extends Figure {
         return points;
     }
 
-    Line(Point[] points){
+    public Line(Point[] points){
         this.points = points;
     }
 

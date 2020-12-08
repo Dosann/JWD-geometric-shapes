@@ -1,6 +1,6 @@
-package com.epam.jwd.task.strategy;
+package com.epam.jwd.task.model;
 
-import com.epam.jwd.task.model.Point;
+import com.epam.jwd.task.strategy.FigurePropertiesStrategy;
 import com.epam.jwd.task.strategy.impl.LinePropertiesStrategy;
 import com.epam.jwd.task.strategy.impl.SquarePropertiesStrategy;
 import com.epam.jwd.task.strategy.impl.TrianglePropertiesStrategy;

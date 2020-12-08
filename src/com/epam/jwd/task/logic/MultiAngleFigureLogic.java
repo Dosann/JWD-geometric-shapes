@@ -1,7 +1,7 @@
 package com.epam.jwd.task.logic;
 
 import com.epam.jwd.task.model.MultiAngleFigure;
-import com.epam.jwd.task.strategy.Figure;
+import com.epam.jwd.task.model.Figure;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
