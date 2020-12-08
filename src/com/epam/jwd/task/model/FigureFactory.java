@@ -12,11 +12,23 @@ public class FigureFactory {
     private static final Figure[] createdFigures = new Figure[12];
     private static int amountOfFigures = 0;
 
+    private static boolean isSameFigureInTheCache(Figure figure, Point[] points) {
+        int amountOfSamePoints = 0;
+        for (int i = 0; i < points.length; i++) {
+            for (int j = 0; j < points.length; j++) {
+                if (figure.getPoints()[i].equals(points[j])) {
+                    amountOfSamePoints++;
+                }
+            }
+        }
+        return amountOfSamePoints == points.length;
+    }
+
     private static Line createLine(Point[] points){
         for (Figure figure : createdFigures) {
             if (figure instanceof Line) {
                 Line line = (Line) figure;
-                if (line.getPoints() == points) {
+                if (isSameFigureInTheCache(line, points)) {
                     return line;
                 }
             }
@@ -27,10 +39,11 @@ public class FigureFactory {
     }
 
     private static Triangle createTriangle(Point[] points){
+
         for (Figure figure : createdFigures) {
             if (figure instanceof Triangle) {
                 Triangle triangle = (Triangle) figure;
-                if (triangle.getPoints() == points) {
+                if(isSameFigureInTheCache(triangle, points)){
                     return triangle;
                 }
             }
@@ -38,13 +51,14 @@ public class FigureFactory {
         final Triangle triangle = new Triangle(points);
         createdFigures[amountOfFigures++] = triangle;
         return triangle;
+
     }
 
     private static Square createSquare(Point[] points){
         for (Figure figure : createdFigures) {
             if (figure instanceof Square) {
                 Square square = (Square) figure;
-                if (square.getPoints() == points) {
+                if (isSameFigureInTheCache(square, points)) {
                     return square;
                 }
             }
@@ -58,7 +72,7 @@ public class FigureFactory {
         for (Figure figure : createdFigures) {
             if (figure instanceof MultiAngleFigure) {
                 MultiAngleFigure multiAngle = (MultiAngleFigure) figure;
-                if (multiAngle.getPoints() == points) {
+                if (isSameFigureInTheCache(multiAngle, points)) {
                     return multiAngle;
                 }
             }

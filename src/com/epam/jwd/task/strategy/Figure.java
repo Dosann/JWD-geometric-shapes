@@ -1,6 +1,9 @@
 package com.epam.jwd.task.strategy;
 
 import com.epam.jwd.task.model.Point;
+import com.epam.jwd.task.strategy.impl.LinePropertiesStrategy;
+import com.epam.jwd.task.strategy.impl.SquarePropertiesStrategy;
+import com.epam.jwd.task.strategy.impl.TrianglePropertiesStrategy;
 
 public abstract class Figure {
 
@@ -18,7 +21,7 @@ public abstract class Figure {
         this.strategy = SquarePropertiesStrategy.getInstance();
     }
 
-    protected abstract Point[] getPoints();
+    public abstract Point[] getPoints();
 
     public double calculateArea() {
         return strategy.calculateArea(getPoints());

@@ -1,7 +1,8 @@
-package com.epam.jwd.task.strategy;
+package com.epam.jwd.task.strategy.impl;
 
 import com.epam.jwd.task.model.Point;
 import com.epam.jwd.task.logic.PointLogic;
+import com.epam.jwd.task.strategy.FigurePropertiesStrategy;
 
 public final class TrianglePropertiesStrategy implements FigurePropertiesStrategy {
 
