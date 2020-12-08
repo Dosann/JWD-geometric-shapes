@@ -1,20 +1,21 @@
-package com.epam.jwd.task.storage;
+package com.epam.jwd.task.storage.impl;
 
 import com.epam.jwd.task.model.Figure;
 import com.epam.jwd.task.model.Point;
+import com.epam.jwd.task.storage.FigureStorage;
 
-public class SimpleFigureStorage implements FigureStorage {
+public class FigureCache implements FigureStorage {
 
     private static class SimpleFigureStorageHolder {
-        private final static SimpleFigureStorage instance = new SimpleFigureStorage();
+        private final static FigureCache instance = new FigureCache();
     }
 
-    public static SimpleFigureStorage getInstance() {
+    public static FigureCache getInstance() {
         return SimpleFigureStorageHolder.instance;
     }
 
-    public static final Figure[] createdFigures = new Figure[12];
     public static int amountOfFigures = 0;
+    public static final Figure[] createdFigures = new Figure[amountOfFigures];
 
     @Override
     public boolean isFigureContainsInTheCache(Figure figure, Point[] points) {

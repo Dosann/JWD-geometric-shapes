@@ -10,7 +10,7 @@ public class Square extends Figure {
         return points;
     }
 
-    public Square(Point[] points) {
+    Square(Point[] points) {
         this.points = points;
     }
 

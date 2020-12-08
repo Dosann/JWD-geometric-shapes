@@ -10,7 +10,7 @@ public class MultiAngleFigure extends Figure {
         return points;
     }
 
-    public MultiAngleFigure(Point[] points) {
+    MultiAngleFigure(Point[] points) {
         this.points = points;
     }
 

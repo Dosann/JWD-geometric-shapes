@@ -10,7 +10,7 @@ public class Line extends Figure {
         return points;
     }
 
-    public Line(Point[] points){
+    Line(Point[] points){
         this.points = points;
     }
 

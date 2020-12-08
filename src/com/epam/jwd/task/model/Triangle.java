@@ -10,7 +10,7 @@ public class Triangle extends Figure {
         return points;
     }
 
-    public Triangle(Point[] points) {
+    Triangle(Point[] points) {
        this.points = points;
     }
 
