@@ -15,7 +15,7 @@ public class FigureCache implements FigureStorage {
     }
 
     public static int amountOfFigures = 0;
-    public static final Figure[] createdFigures = new Figure[amountOfFigures];
+    public static final Figure[] createdFigures = new Figure[12];
 
     @Override
     public boolean isFigureContainsInTheCache(Figure figure, Point[] points) {
