@@ -1,14 +1,16 @@
 package com.epam.jwd.task.app;
 
 import com.epam.jwd.task.exception.FigureException;
+import com.epam.jwd.task.factory.ApplicationContext;
+import com.epam.jwd.task.factory.FigureFactory;
 import com.epam.jwd.task.logic.LineLogic;
 import com.epam.jwd.task.logic.TriangleLogic;
 import com.epam.jwd.task.logic.SquareLogic;
 import com.epam.jwd.task.logic.MultiAngleFigureLogic;
 import com.epam.jwd.task.model.Point;
-import com.epam.jwd.task.model.FigureFactory;
 import com.epam.jwd.task.model.PointFactory;
-import com.epam.jwd.task.strategy.Figure;
+import com.epam.jwd.task.model.Figure;
+import com.epam.jwd.task.model.SimpleApplicationContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Level;
@@ -26,8 +28,8 @@ public class Main {
     };
 
     private static final Point[] POINTS_FOR_FIRST_TRIANGLE = {
-            PointFactory.buildPoint(-1, 3),
             PointFactory.buildPoint(-1, 0),
+            PointFactory.buildPoint(-1, 3),
             PointFactory.buildPoint(3, 0)
     };
 
@@ -68,21 +70,15 @@ public class Main {
             PointFactory.buildPoint(1, 3.32)
     };
 
-    public static void main(String[] args) {
-        generateInfoAboutLines();
-        generateInfoAboutTriangles();
-        generateInfoAboutSquares();
-        generateInfoAboutMultiAngles();
-    }
-
-
+    static final ApplicationContext applicationContext = SimpleApplicationContext.INSTANCE;
+    static final FigureFactory figureFactory = applicationContext.createFigureFactory();
 
     private static void generateInfoAboutLines() {
         Figure[] lines = new Figure[0];
 
         try {
             lines = new Figure[]{
-                    FigureFactory.buildFigure("Line", POINTS_FOR_FIRST_LINE)
+                    figureFactory.createFigure("Line", POINTS_FOR_FIRST_LINE)
             };
         } catch (FigureException e) {
             LOGGER.log(Level.ERROR, "Exception has been thrown:\n{}", e.toString());
@@ -95,8 +91,8 @@ public class Main {
 
         try {
             triangles = new Figure[]{
-                    FigureFactory.buildFigure("Triangle", POINTS_FOR_SECOND_TRIANGLE),
-                    FigureFactory.buildFigure("Triangle", POINTS_FOR_FIRST_TRIANGLE)
+                    figureFactory.createFigure("Triangle", POINTS_FOR_SECOND_TRIANGLE),
+                    figureFactory.createFigure("Triangle", POINTS_FOR_FIRST_TRIANGLE)
             };
         } catch (FigureException e) {
             LOGGER.log(Level.ERROR, "Exception has been thrown:\n{}", e.toString());
@@ -109,7 +105,7 @@ public class Main {
 
         try {
             squares = new Figure[]{
-                    FigureFactory.buildFigure("Square", POINTS_FOR_SQUARE)
+                    figureFactory.createFigure("Square", POINTS_FOR_SQUARE)
             };
         } catch (FigureException e) {
             LOGGER.log(Level.ERROR, "Exception has been thrown:\n{}", e.toString());
@@ -122,11 +118,19 @@ public class Main {
 
         try {
             multiAngles = new Figure[]{
-                    FigureFactory.buildFigure("Multi-angle", POINTS_FOR_THIRD_MULTI_ANGLE)
+                    figureFactory.createFigure("Multi-angle", POINTS_FOR_THIRD_MULTI_ANGLE)
             };
         } catch (FigureException e) {
             LOGGER.log(Level.ERROR, "Exception has been thrown:\n{}", e.toString());
         }
         MultiAngleFigureLogic.printMultiAngles(multiAngles);
     }
+
+    public static void main(String[] args) {
+        generateInfoAboutLines();
+        generateInfoAboutTriangles();
+        generateInfoAboutSquares();
+        generateInfoAboutMultiAngles();
+    }
+
 }

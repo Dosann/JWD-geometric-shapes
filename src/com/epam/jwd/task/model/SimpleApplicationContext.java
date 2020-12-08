@@ -5,7 +5,8 @@ import com.epam.jwd.task.decorator.PreProcessingFactoryDecorator;
 import com.epam.jwd.task.factory.ApplicationContext;
 import com.epam.jwd.task.factory.FigureFactory;
 
-public class SimpleApplicationContext implements ApplicationContext {
+public enum SimpleApplicationContext implements ApplicationContext {
+    INSTANCE;
 
     @Override
     public FigureFactory createFigureFactory() {
