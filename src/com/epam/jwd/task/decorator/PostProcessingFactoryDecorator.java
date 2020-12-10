@@ -7,7 +7,6 @@ import com.epam.jwd.task.model.Point;
 import com.epam.jwd.task.service.FigurePostProcessor;
 import com.epam.jwd.task.service.impl.FigureExistencePostProcessor;
 
-
 public class PostProcessingFactoryDecorator implements FigureFactory {
 
     private final FigureFactory figureFactory;

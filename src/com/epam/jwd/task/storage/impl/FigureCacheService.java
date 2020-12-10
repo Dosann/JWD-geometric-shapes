@@ -6,12 +6,12 @@ import com.epam.jwd.task.storage.FigureStorage;
 
 public class FigureCacheService implements FigureStorage {
 
-    private static class SimpleFigureStorageHolder {
+    private static class FigureCacheServiceHolder {
         private final static FigureCacheService instance = new FigureCacheService();
     }
 
     public static FigureCacheService getInstance() {
-        return SimpleFigureStorageHolder.instance;
+        return FigureCacheServiceHolder.instance;
     }
 
     @Override

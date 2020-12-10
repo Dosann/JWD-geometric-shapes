@@ -1,7 +1,6 @@
 package com.epam.jwd.task.model;
 
 import com.epam.jwd.task.exception.FigureException;
-import com.epam.jwd.task.exception.InvalidFigureTypeException;
 import com.epam.jwd.task.factory.FigureFactory;
 import com.epam.jwd.task.storage.impl.FigureCache;
 import com.epam.jwd.task.storage.impl.FigureCacheService;
@@ -26,7 +25,7 @@ public class SimpleFigureFactory implements FigureFactory {
                 figure = createMultiangleOrFetchFromCache(points);
                 break;
             default:
-                throw new InvalidFigureTypeException("Invalid figure type!");
+                throw new IllegalArgumentException("Invalid figure type!");
         }
         return figure;
     }

@@ -120,7 +120,7 @@ public class Main {
 
         try {
             multiAngles = new Figure[]{
-                    figureFactory.createFigure("Multi-angle", POINTS_FOR_THIRD_MULTI_ANGLE)
+                    figureFactory.createFigure("Mult-angle", POINTS_FOR_THIRD_MULTI_ANGLE)
             };
         } catch (FigureException e) {
             LOGGER.log(Level.ERROR, "Exception has been thrown:\n{}", e.toString());
