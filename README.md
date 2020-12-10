@@ -2,7 +2,7 @@
 
 ## Goals
 ### Learn how to 
-* implement pattern strategies: Strategy, Singleton, Factory
+* implement pattern strategies: Strategy, Singleton, Factory, Decorator
 * handle exceptions
 
 ## Process
