@@ -4,6 +4,7 @@ import com.epam.jwd.task.exception.FigureException;
 import com.epam.jwd.task.exception.InvalidFigureTypeException;
 import com.epam.jwd.task.factory.FigureFactory;
 import com.epam.jwd.task.storage.impl.FigureCache;
+import com.epam.jwd.task.storage.impl.FigureCacheService;
 
 public class SimpleFigureFactory implements FigureFactory {
 
@@ -34,7 +35,7 @@ public class SimpleFigureFactory implements FigureFactory {
         for (Figure figure : FigureCache.createdFigures) {
             if (figure instanceof Line) {
                 Line line = (Line) figure;
-                if (FigureCache.getInstance().isFigureContainsInTheCache(line, points)) {
+                if (FigureCacheService.getInstance().isFigureContainsInTheCache(line, points)) {
                     return line;
                 }
             }
@@ -48,7 +49,7 @@ public class SimpleFigureFactory implements FigureFactory {
         for (Figure figure : FigureCache.createdFigures) {
             if (figure instanceof Triangle) {
                 Triangle triangle = (Triangle) figure;
-                if(FigureCache.getInstance().isFigureContainsInTheCache(triangle, points)){
+                if(FigureCacheService.getInstance().isFigureContainsInTheCache(triangle, points)){
                     return triangle;
                 }
             }
@@ -62,7 +63,7 @@ public class SimpleFigureFactory implements FigureFactory {
         for (Figure figure : FigureCache.createdFigures) {
             if (figure instanceof Square) {
                 Square square = (Square) figure;
-                if (FigureCache.getInstance().isFigureContainsInTheCache(square, points)) {
+                if (FigureCacheService.getInstance().isFigureContainsInTheCache(square, points)) {
                     return square;
                 }
             }
@@ -76,7 +77,7 @@ public class SimpleFigureFactory implements FigureFactory {
         for (Figure figure : FigureCache.createdFigures) {
             if (figure instanceof MultiAngleFigure) {
                 MultiAngleFigure multiAngle = (MultiAngleFigure) figure;
-                if (FigureCache.getInstance().isFigureContainsInTheCache(multiAngle, points)) {
+                if (FigureCacheService.getInstance().isFigureContainsInTheCache(multiAngle, points)) {
                     return multiAngle;
                 }
             }
