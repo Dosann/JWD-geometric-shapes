@@ -19,59 +19,61 @@ public class Main {
 
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
+    private static final PointFactory pointFactory = PointFactory.getInstance();
+
     private static final Point[] POINTS_FOR_FIRST_LINE = {
-            PointFactory.buildPoint(0.1, -9.4), PointFactory.buildPoint(0.1, -9.4)
+            pointFactory.buildPoint(0.1, -9.4), pointFactory.buildPoint(0.1, -9.4)
     };
 
     private static final Point[] POINTS_FOR_SECOND_LINE = {
-            PointFactory.buildPoint(0.1, -9), PointFactory.buildPoint(-2.1, 4)
+            pointFactory.buildPoint(0.1, -9), pointFactory.buildPoint(-2.1, 4)
     };
 
     private static final Point[] POINTS_FOR_FIRST_TRIANGLE = {
-            PointFactory.buildPoint(-1, 0),
-            PointFactory.buildPoint(-1, 3),
-            PointFactory.buildPoint(3, 0)
+            pointFactory.buildPoint(-1, 0),
+            pointFactory.buildPoint(-1, 3),
+            pointFactory.buildPoint(3, 0)
     };
 
     private static final Point[] POINTS_FOR_SECOND_TRIANGLE = {
-            PointFactory.buildPoint(3, 0),
-            PointFactory.buildPoint(-1, 3),
-            PointFactory.buildPoint(-1, 0)
+            pointFactory.buildPoint(3, 0),
+            pointFactory.buildPoint(-1, 3),
+            pointFactory.buildPoint(-1, 0)
     };
 
     private static final Point[] POINTS_FOR_SQUARE = {
-            PointFactory.buildPoint(3, 3),
-            PointFactory.buildPoint(10, 10),
-            PointFactory.buildPoint(3, 10),
-            PointFactory.buildPoint(10, 3)
+            pointFactory.buildPoint(3, 3),
+            pointFactory.buildPoint(10, 10),
+            pointFactory.buildPoint(3, 10),
+            pointFactory.buildPoint(10, 3)
     };
 
     private static final Point[] POINTS_FOR_FIRST_MULTI_ANGLE = {
-            PointFactory.buildPoint(3, 3),
-            PointFactory.buildPoint(10, 10),
-            PointFactory.buildPoint(3, 10),
-            PointFactory.buildPoint(7, 3),
-            PointFactory.buildPoint(12, 7)
+            pointFactory.buildPoint(3, 3),
+            pointFactory.buildPoint(10, 10),
+            pointFactory.buildPoint(3, 10),
+            pointFactory.buildPoint(7, 3),
+            pointFactory.buildPoint(12, 7)
     };
 
     private static final Point[] POINTS_FOR_SECOND_MULTI_ANGLE = {
-            PointFactory.buildPoint(9, 3),
-            PointFactory.buildPoint(0, 9),
-            PointFactory.buildPoint(9, 3),
-            PointFactory.buildPoint(8, 3)
+            pointFactory.buildPoint(9, 3),
+            pointFactory.buildPoint(0, 9),
+            pointFactory.buildPoint(9, 3),
+            pointFactory.buildPoint(8, 3)
     };
 
     private static final Point[] POINTS_FOR_THIRD_MULTI_ANGLE = {
-            PointFactory.buildPoint(-2, 3),
-            PointFactory.buildPoint(0, 6.4),
-            PointFactory.buildPoint(-3.32, -10.43),
-            PointFactory.buildPoint(-1.9, 3.89),
-            PointFactory.buildPoint(-9, 3.7),
-            PointFactory.buildPoint(1, 3.32)
+            pointFactory.buildPoint(-2, 3),
+            pointFactory.buildPoint(0, 6.4),
+            pointFactory.buildPoint(-3.32, -10.43),
+            pointFactory.buildPoint(-1.9, 3.89),
+            pointFactory.buildPoint(-9, 3.7),
+            pointFactory.buildPoint(1, 3.32)
     };
 
-    static final ApplicationContext applicationContext = SimpleApplicationContext.INSTANCE;
-    static final FigureFactory figureFactory = applicationContext.createFigureFactory();
+    private static final ApplicationContext applicationContext = SimpleApplicationContext.INSTANCE;
+    private static final FigureFactory figureFactory = applicationContext.createFigureFactory();
 
     private static void generateInfoAboutLines() {
         Figure[] lines = new Figure[0];
