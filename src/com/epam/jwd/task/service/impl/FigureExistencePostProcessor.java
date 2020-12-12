@@ -22,6 +22,7 @@ public class FigureExistencePostProcessor implements FigurePostProcessor {
             figure.setSquareStrategy();
             checkSquareValidation(figure);
         } else if (figure instanceof MultiAngleFigure) {
+            figure.setMultiAngleStrategy();
             checkMultiAngleValidation(figure);
         }
         return figure;

@@ -2,6 +2,7 @@ package com.epam.jwd.task.model;
 
 import com.epam.jwd.task.strategy.FigurePropertiesStrategy;
 import com.epam.jwd.task.strategy.impl.LinePropertiesStrategy;
+import com.epam.jwd.task.strategy.impl.MultiAnglePropertiesStrategy;
 import com.epam.jwd.task.strategy.impl.SquarePropertiesStrategy;
 import com.epam.jwd.task.strategy.impl.TrianglePropertiesStrategy;
 
@@ -21,6 +22,10 @@ public abstract class Figure {
 
     public void setSquareStrategy() {
         this.strategy = SquarePropertiesStrategy.getInstance();
+    }
+
+    public void setMultiAngleStrategy() {
+        this.strategy = MultiAnglePropertiesStrategy.getInstance();
     }
 
     public abstract List<Point> getPoints();

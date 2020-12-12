@@ -7,7 +7,6 @@ import java.util.List;
 
 public abstract class FigureCache {
 
-
     public static List<Figure> figuresInTheCache = new ArrayList<>();
 
 }

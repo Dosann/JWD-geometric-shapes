@@ -1,15 +1,8 @@
 package com.epam.jwd.task.logic;
 
 import com.epam.jwd.task.model.Square;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.Level;
-import com.epam.jwd.task.model.Figure;
-
 
 public class SquareLogic {
-
-    private static final Logger LOGGER = LogManager.getLogger(SquareLogic.class);
 
     public static double[] destinationsFromOnePoint(Square square) {
         double[] sides = new double[3];
@@ -39,13 +32,4 @@ public class SquareLogic {
                 PointLogic.squarePointsDestination(square.getPoints().get(1), square.getPoints().get(3));
     }
 
-    public static void printSquares(Figure[] figures) {
-        for (Figure figure : figures) {
-            if (figure instanceof Square) {
-                Square square = (Square) figure;
-                LOGGER.log(Level.INFO, "{}\nPerimeter = {}\nArea = {}", square,
-                        square.calculatePerimeter(), square.calculateArea());
-            }
-        }
-    }
 }
