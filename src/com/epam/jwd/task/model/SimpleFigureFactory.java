@@ -10,7 +10,7 @@ import java.util.List;
 public class SimpleFigureFactory implements FigureFactory {
 
     @Override
-    public Figure createFigure(String type, List<Point> points) throws FigureException {
+    public Figure createFigure(String type, List<Point> points) {
 
         Figure figure;
         switch (type) {
@@ -88,7 +88,6 @@ public class SimpleFigureFactory implements FigureFactory {
         FigureCache.figuresInTheCache.add(multiAngle);
         return multiAngle;
     }
-
 }
 
 
