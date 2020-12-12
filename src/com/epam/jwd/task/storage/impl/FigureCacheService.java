@@ -4,6 +4,8 @@ import com.epam.jwd.task.model.Figure;
 import com.epam.jwd.task.model.Point;
 import com.epam.jwd.task.storage.FigureStorage;
 
+import java.util.List;
+
 public class FigureCacheService implements FigureStorage {
 
     private static class FigureCacheServiceHolder {
@@ -15,15 +17,15 @@ public class FigureCacheService implements FigureStorage {
     }
 
     @Override
-    public boolean isFigureContainsInTheCache(Figure figure, Point[] points) {
+    public boolean isFigureContainsInTheCache(Figure figure, List<Point> points) {
         int amountOfSamePoints = 0;
-        for (int i = 0; i < points.length; i++) {
-            for (int j = 0; j < points.length; j++) {
-                if (figure.getPoints()[i].equals(points[j])) {
+        for (int i = 0; i < points.size(); i++) {
+            for (int j = 0; j < points.size(); j++) {
+                if (figure.getPoints().get(i).equals(points.get(j))) {
                     amountOfSamePoints++;
                 }
             }
         }
-        return amountOfSamePoints == points.length;
+        return amountOfSamePoints == points.size();
     }
 }

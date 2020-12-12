@@ -11,9 +11,9 @@ public class TriangleLogic {
     private static final Logger LOGGER = LogManager.getLogger(TriangleLogic.class);
 
     public static boolean isExist(Triangle triangle) {
-        double sideA = PointLogic.pointsDestination(triangle.getPoints()[0], triangle.getPoints()[1]);
-        double sideB = PointLogic.pointsDestination(triangle.getPoints()[0], triangle.getPoints()[2]);
-        double sideC = PointLogic.pointsDestination(triangle.getPoints()[0], triangle.getPoints()[2]);
+        double sideA = PointLogic.pointsDestination(triangle.getPoints().get(0), triangle.getPoints().get(1));
+        double sideB = PointLogic.pointsDestination(triangle.getPoints().get(0), triangle.getPoints().get(2));
+        double sideC = PointLogic.pointsDestination(triangle.getPoints().get(0), triangle.getPoints().get(2));
 
         double maximumOfSides = Math.max(sideA, sideB);
         if (maximumOfSides < sideC) {

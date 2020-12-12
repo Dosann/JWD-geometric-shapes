@@ -11,7 +11,7 @@ public class MultiAngleFigureLogic {
     private static final Logger LOGGER = LogManager.getLogger(MultiAngleFigureLogic.class);
 
     public static boolean isExist(MultiAngleFigure multiAngle) {
-        return multiAngle.getPoints().length <= 6 && multiAngle.getPoints().length >= 4;
+        return multiAngle.getPoints().size() <= 6 && multiAngle.getPoints().size() >= 4;
     }
 
     public static void printMultiAngles(Figure[] figures) {

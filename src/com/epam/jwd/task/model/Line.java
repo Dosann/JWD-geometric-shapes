@@ -1,21 +1,21 @@
 package com.epam.jwd.task.model;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class Line extends Figure {
 
-    private final Point[] points;
+    private final List<Point> points;
 
-    public Point[] getPoints() {
+    public List<Point> getPoints() {
         return points;
     }
 
-    Line(Point[] points){
+    Line(List<Point> points){
         this.points = points;
     }
 
     @Override
     public String toString() {
-        return "Line{\n\t" + Arrays.toString(points) + "\n}";
+        return "Line{\n\t" + points + "\n}";
     }
 }

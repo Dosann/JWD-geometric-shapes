@@ -4,16 +4,18 @@ import com.epam.jwd.task.logic.PointLogic;
 import com.epam.jwd.task.model.Point;
 import com.epam.jwd.task.strategy.FigurePropertiesStrategy;
 
+import java.util.List;
+
 public enum LinePropertiesStrategy implements FigurePropertiesStrategy {
     INSTANCE;
 
     @Override
-    public double calculateArea(Point[] points) {
+    public double calculateArea(List<Point> points) {
         return 0;
     }
 
     @Override
-    public double calculatePerimeter(Point[] points) {
-        return PointLogic.pointsDestination(points[0], points[1]);
+    public double calculatePerimeter(List<Point> points) {
+        return PointLogic.pointsDestination(points.get(0), points.get(1));
     }
 }

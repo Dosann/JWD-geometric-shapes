@@ -1,21 +1,21 @@
 package com.epam.jwd.task.model;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class Triangle extends Figure {
 
-    private final Point[] points;
+    private final List<Point> points;
 
-    public Point[] getPoints() {
+    public List<Point> getPoints() {
         return points;
     }
 
-    Triangle(Point[] points) {
+    Triangle(List<Point> points) {
        this.points = points;
     }
 
     @Override
     public String toString() {
-        return "Triangle{\n\t" + Arrays.toString(points) + "\n}";
+        return "Triangle{\n\t" + points + "\n}";
     }
 }

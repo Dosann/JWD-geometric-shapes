@@ -13,9 +13,9 @@ public class SquareLogic {
 
     public static double[] destinationsFromOnePoint(Square square) {
         double[] sides = new double[3];
-        sides[0] = PointLogic.squarePointsDestination(square.getPoints()[0], square.getPoints()[1]);
-        sides[1] = PointLogic.squarePointsDestination(square.getPoints()[0], square.getPoints()[2]);
-        sides[2] = PointLogic.squarePointsDestination(square.getPoints()[0], square.getPoints()[3]);
+        sides[0] = PointLogic.squarePointsDestination(square.getPoints().get(0), square.getPoints().get(1));
+        sides[1] = PointLogic.squarePointsDestination(square.getPoints().get(0), square.getPoints().get(2));
+        sides[2] = PointLogic.squarePointsDestination(square.getPoints().get(0), square.getPoints().get(3));
         return sides;
     }
 
@@ -23,20 +23,20 @@ public class SquareLogic {
         double[] sides = SquareLogic.destinationsFromOnePoint(square);
 
         if (sides[0] == sides[1] && 2.0 * sides[0] == sides[2]
-                && 2.0 * PointLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[3]) ==
-                PointLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[2])) {
+                && 2.0 * PointLogic.squarePointsDestination(square.getPoints().get(1), square.getPoints().get(3)) ==
+                PointLogic.squarePointsDestination(square.getPoints().get(1), square.getPoints().get(2))) {
             return true;
         }
 
         if (sides[1] == sides[2] && 2.0 * sides[1] == sides[0]
-                && 2.0 * PointLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[2]) ==
-                PointLogic.squarePointsDestination(square.getPoints()[2], square.getPoints()[3])) {
+                && 2.0 * PointLogic.squarePointsDestination(square.getPoints().get(1), square.getPoints().get(2)) ==
+                PointLogic.squarePointsDestination(square.getPoints().get(2), square.getPoints().get(3))) {
             return true;
         }
 
         return sides[0] == sides[2] && 2.0 * sides[0] == sides[1]
-                && 2.0 * PointLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[2]) ==
-                PointLogic.squarePointsDestination(square.getPoints()[1], square.getPoints()[3]);
+                && 2.0 * PointLogic.squarePointsDestination(square.getPoints().get(1), square.getPoints().get(2)) ==
+                PointLogic.squarePointsDestination(square.getPoints().get(1), square.getPoints().get(3));
     }
 
     public static void printSquares(Figure[] figures) {

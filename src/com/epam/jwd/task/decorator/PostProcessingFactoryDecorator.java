@@ -7,6 +7,7 @@ import com.epam.jwd.task.model.Point;
 import com.epam.jwd.task.service.FigurePostProcessor;
 import com.epam.jwd.task.service.impl.FigureExistencePostProcessor;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PostProcessingFactoryDecorator implements FigureFactory {
 
@@ -22,7 +23,7 @@ public class PostProcessingFactoryDecorator implements FigureFactory {
     }
 
     @Override
-    public Figure createFigure(String type, Point[] points) throws FigureException {
+    public Figure createFigure(String type, List<Point> points) throws FigureException {
         Figure figure = figureFactory.createFigure(type, points);
         for (FigurePostProcessor postProcessor : postProcessors) {
             figure = postProcessor.process(figure);

@@ -5,13 +5,15 @@ import com.epam.jwd.task.exception.FigureNotExistException;
 import com.epam.jwd.task.model.Point;
 import com.epam.jwd.task.service.FigurePreProcessor;
 
+import java.util.List;
+
 public class FigureExistencePreProcessor implements FigurePreProcessor {
 
     @Override
-    public void process(Point[] points) throws FigureException {
-        for (int i = 0; i < points.length; i++) {
-            for (int j = i + 1; j < points.length; j++) {
-                if (points[i].equals(points[j])) {
+    public void process(List<Point> points) throws FigureException {
+        for (int i = 0; i < points.size(); i++) {
+            for (int j = i + 1; j < points.size(); j++) {
+                if (points.get(i).equals(points.get(j))) {
                     throw new FigureNotExistException("Can't create a figure from the same points");
                 }
             }

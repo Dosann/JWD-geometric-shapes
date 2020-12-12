@@ -5,10 +5,12 @@ import com.epam.jwd.task.factory.FigureFactory;
 import com.epam.jwd.task.storage.impl.FigureCache;
 import com.epam.jwd.task.storage.impl.FigureCacheService;
 
+import java.util.List;
+
 public class SimpleFigureFactory implements FigureFactory {
 
     @Override
-    public Figure createFigure(String type, Point[] points) throws FigureException {
+    public Figure createFigure(String type, List<Point> points) throws FigureException {
 
         Figure figure;
         switch (type) {
@@ -30,8 +32,8 @@ public class SimpleFigureFactory implements FigureFactory {
         return figure;
     }
 
-    private Line createLineOrFetchFromCache (Point[] points) {
-        for (Figure figure : FigureCache.createdFigures) {
+    private Line createLineOrFetchFromCache (List<Point> points) {
+        for (Figure figure : FigureCache.figuresInTheCache) {
             if (figure instanceof Line) {
                 Line line = (Line) figure;
                 if (FigureCacheService.getInstance().isFigureContainsInTheCache(line, points)) {
@@ -40,12 +42,12 @@ public class SimpleFigureFactory implements FigureFactory {
             }
         }
         final Line line = new Line(points);
-        FigureCache.createdFigures[FigureCache.amountOfFigures++] = line;
+        FigureCache.figuresInTheCache.add(line);
         return line;
     }
 
-    private Triangle createTriangleOrFetchFromCache (Point[] points) {
-        for (Figure figure : FigureCache.createdFigures) {
+    private Triangle createTriangleOrFetchFromCache (List<Point> points) {
+        for (Figure figure : FigureCache.figuresInTheCache) {
             if (figure instanceof Triangle) {
                 Triangle triangle = (Triangle) figure;
                 if(FigureCacheService.getInstance().isFigureContainsInTheCache(triangle, points)){
@@ -54,12 +56,13 @@ public class SimpleFigureFactory implements FigureFactory {
             }
         }
         final Triangle triangle = new Triangle(points);
-        FigureCache.createdFigures[FigureCache.amountOfFigures++] = triangle;
+        FigureCache.figuresInTheCache.add(triangle);
         return triangle;
+
     }
 
-    private Square createSquareOrFetchFromCache (Point[] points) {
-        for (Figure figure : FigureCache.createdFigures) {
+    private Square createSquareOrFetchFromCache (List<Point> points) {
+        for (Figure figure : FigureCache.figuresInTheCache) {
             if (figure instanceof Square) {
                 Square square = (Square) figure;
                 if (FigureCacheService.getInstance().isFigureContainsInTheCache(square, points)) {
@@ -68,12 +71,12 @@ public class SimpleFigureFactory implements FigureFactory {
             }
         }
         final Square square = new Square(points);
-        FigureCache.createdFigures[FigureCache.amountOfFigures++] = square;
+        FigureCache.figuresInTheCache.add(square);
         return square;
     }
 
-    private MultiAngleFigure createMultiangleOrFetchFromCache (Point[] points) {
-        for (Figure figure : FigureCache.createdFigures) {
+    private MultiAngleFigure createMultiangleOrFetchFromCache (List<Point> points) {
+        for (Figure figure : FigureCache.figuresInTheCache) {
             if (figure instanceof MultiAngleFigure) {
                 MultiAngleFigure multiAngle = (MultiAngleFigure) figure;
                 if (FigureCacheService.getInstance().isFigureContainsInTheCache(multiAngle, points)) {
@@ -82,7 +85,7 @@ public class SimpleFigureFactory implements FigureFactory {
             }
         }
         final MultiAngleFigure multiAngle = new MultiAngleFigure(points);
-        FigureCache.createdFigures[FigureCache.amountOfFigures++] = multiAngle;
+        FigureCache.figuresInTheCache.add(multiAngle);
         return multiAngle;
     }
 
