@@ -1,10 +1,11 @@
 package com.epam.jwd.task.storage.impl;
 
 import com.epam.jwd.task.model.Figure;
+import java.util.ArrayList;
 
 public abstract class FigureCache {
 
-    public static int amountOfFigures = 0;
-    public static final Figure[] createdFigures = new Figure[12];
+
+    public static ArrayList<Figure> figuresInTheCache = new ArrayList<>();
 
 }
