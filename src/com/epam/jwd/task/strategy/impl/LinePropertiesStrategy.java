@@ -18,4 +18,9 @@ public enum LinePropertiesStrategy implements FigurePropertiesStrategy {
     public double calculatePerimeter(List<Point> points) {
         return PointLogic.pointsDestination(points.get(0), points.get(1));
     }
+
+    @Override
+    public boolean isExist(List<Point> points) {
+        return true;
+    }
 }

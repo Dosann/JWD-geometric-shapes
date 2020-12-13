@@ -32,4 +32,34 @@ public final class SquarePropertiesStrategy implements FigurePropertiesStrategy 
     public double calculatePerimeter(List<Point> points) {
         return 4 * defineSideOfSquare(points);
     }
+
+    @Override
+    public boolean isExist(List<Point> points) {
+        double[] sides = destinationsFromOnePoint(points);
+
+        if (sides[0] == sides[1] && 2.0 * sides[0] == sides[2]
+                && 2.0 * PointLogic.squarePointsDestination(points.get(1), points.get(3)) ==
+                PointLogic.squarePointsDestination(points.get(1), points.get(2))) {
+            return true;
+        }
+
+        if (sides[1] == sides[2] && 2.0 * sides[1] == sides[0]
+                && 2.0 * PointLogic.squarePointsDestination(points.get(1), points.get(2)) ==
+                PointLogic.squarePointsDestination(points.get(2), points.get(3))) {
+            return true;
+        }
+
+        return sides[0] == sides[2] && 2.0 * sides[0] == sides[1]
+                && 2.0 * PointLogic.squarePointsDestination(points.get(1), points.get(2)) ==
+                PointLogic.squarePointsDestination(points.get(1), points.get(3));
+    }
+
+    public static double[] destinationsFromOnePoint(List<Point> points) {
+        double[] sides = new double[3];
+        sides[0] = PointLogic.squarePointsDestination(points.get(0), points.get(1));
+        sides[1] = PointLogic.squarePointsDestination(points.get(0), points.get(2));
+        sides[2] = PointLogic.squarePointsDestination(points.get(0), points.get(3));
+        return sides;
+    }
+
 }

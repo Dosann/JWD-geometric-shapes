@@ -37,4 +37,8 @@ public abstract class Figure {
     public double calculatePerimeter() {
         return strategy.calculatePerimeter(getPoints());
     }
+
+    public boolean isFigureExist() {
+        return strategy.isExist(getPoints());
+    }
 }

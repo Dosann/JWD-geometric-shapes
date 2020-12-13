@@ -25,4 +25,9 @@ public class MultiAnglePropertiesStrategy implements FigurePropertiesStrategy {
     public double calculatePerimeter(List<Point> points) {
         return 0;
     }
+
+    @Override
+    public boolean isExist(List<Point> points) {
+        return points.size() <= 6 && points.size() >= 4;
+    }
 }

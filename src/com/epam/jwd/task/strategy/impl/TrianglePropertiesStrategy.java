@@ -31,4 +31,17 @@ public final class TrianglePropertiesStrategy implements FigurePropertiesStrateg
         double thirdSide = PointLogic.pointsDestination(points.get(1), points.get(2));
         return firstSide + secondSide + thirdSide;
     }
+
+    @Override
+    public boolean isExist(List<Point> points) {
+        double sideA = PointLogic.pointsDestination(points.get(0), points.get(1));
+        double sideB = PointLogic.pointsDestination(points.get(0), points.get(2));
+        double sideC = PointLogic.pointsDestination(points.get(0), points.get(2));
+
+        double maximumOfSides = Math.max(sideA, sideB);
+        if (maximumOfSides < sideC) {
+            maximumOfSides = sideC;
+        }
+        return (maximumOfSides <= sideA + sideB && calculateArea(points) != 0);
+    }
 }
