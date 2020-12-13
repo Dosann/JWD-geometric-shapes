@@ -13,7 +13,7 @@ import java.util.List;
 public class PreProcessingFactoryDecorator implements FigureFactory {
 
     private final FigureFactory figureFactory;
-    private ArrayList<FigurePreProcessor> preProcessors = new ArrayList<>();
+    private List<FigurePreProcessor> preProcessors = new ArrayList<>();
 
     {
         preProcessors.add(new FigureExistencePreProcessor());

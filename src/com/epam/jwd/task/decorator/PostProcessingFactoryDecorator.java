@@ -6,13 +6,14 @@ import com.epam.jwd.task.model.Figure;
 import com.epam.jwd.task.model.Point;
 import com.epam.jwd.task.service.FigurePostProcessor;
 import com.epam.jwd.task.service.impl.FigureExistencePostProcessor;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class PostProcessingFactoryDecorator implements FigureFactory {
 
     private final FigureFactory figureFactory;
-    private ArrayList<FigurePostProcessor> postProcessors = new ArrayList<>();
+    private List<FigurePostProcessor> postProcessors = new ArrayList<>();
 
     {
         postProcessors.add(new FigureExistencePostProcessor());
