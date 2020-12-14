@@ -11,6 +11,7 @@ import java.util.List;
 public abstract class Figure {
 
     private FigurePropertiesStrategy strategy;
+    private String figureColor;
 
     public Figure() {
         this.strategy = LinePropertiesStrategy.INSTANCE;
@@ -40,5 +41,13 @@ public abstract class Figure {
 
     public boolean isFigureExist() {
         return strategy.isExist(getPoints());
+    }
+
+    public String getFigureColor() {
+        return figureColor;
+    }
+
+    public void setFigureColor(String figureColor) {
+        this.figureColor = figureColor;
     }
 }
