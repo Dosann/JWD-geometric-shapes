@@ -10,7 +10,8 @@ public class Triangle extends Figure {
         return points;
     }
 
-    Triangle(List<Point> points) {
+    Triangle(List<Point> points, Color color, String name) {
+        super(color, name);
        this.points = points;
     }
 

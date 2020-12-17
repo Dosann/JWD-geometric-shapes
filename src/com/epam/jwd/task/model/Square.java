@@ -10,7 +10,8 @@ public class Square extends Figure {
         return points;
     }
 
-    Square(List<Point> points) {
+    Square(List<Point> points, Color color, String name) {
+        super(color, name);
         this.points = points;
     }
 

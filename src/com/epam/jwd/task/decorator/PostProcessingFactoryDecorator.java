@@ -2,6 +2,7 @@ package com.epam.jwd.task.decorator;
 
 import com.epam.jwd.task.exception.FigureException;
 import com.epam.jwd.task.factory.FigureFactory;
+import com.epam.jwd.task.model.Color;
 import com.epam.jwd.task.model.Figure;
 import com.epam.jwd.task.model.Point;
 import com.epam.jwd.task.service.FigurePostProcessor;
@@ -13,7 +14,7 @@ import java.util.List;
 public class PostProcessingFactoryDecorator implements FigureFactory {
 
     private final FigureFactory figureFactory;
-    private List<FigurePostProcessor> postProcessors = new ArrayList<>();
+    private final List<FigurePostProcessor> postProcessors = new ArrayList<>();
 
     {
         postProcessors.add(new FigureExistencePostProcessor());
@@ -24,8 +25,8 @@ public class PostProcessingFactoryDecorator implements FigureFactory {
     }
 
     @Override
-    public Figure createFigure(String type, List<Point> points) throws FigureException {
-        Figure figure = figureFactory.createFigure(type, points);
+    public Figure createFigure(String type, List<Point> points, Color color, String name) throws FigureException {
+        Figure figure = figureFactory.createFigure(type, points, color, name);
         for (FigurePostProcessor postProcessor : postProcessors) {
             figure = postProcessor.process(figure);
         }

@@ -2,6 +2,7 @@ package com.epam.jwd.task.decorator;
 
 import com.epam.jwd.task.exception.FigureException;
 import com.epam.jwd.task.factory.FigureFactory;
+import com.epam.jwd.task.model.Color;
 import com.epam.jwd.task.model.Figure;
 import com.epam.jwd.task.model.Point;
 import com.epam.jwd.task.service.FigurePreProcessor;
@@ -13,7 +14,7 @@ import java.util.List;
 public class PreProcessingFactoryDecorator implements FigureFactory {
 
     private final FigureFactory figureFactory;
-    private List<FigurePreProcessor> preProcessors = new ArrayList<>();
+    private final List<FigurePreProcessor> preProcessors = new ArrayList<>();
 
     {
         preProcessors.add(new FigureExistencePreProcessor());
@@ -24,11 +25,10 @@ public class PreProcessingFactoryDecorator implements FigureFactory {
     }
 
     @Override
-    public Figure createFigure(String type, List<Point> points) throws FigureException {
+    public Figure createFigure(String type, List<Point> points, Color color, String name) throws FigureException {
         for (FigurePreProcessor preProcessor : preProcessors) {
             preProcessor.process(points);
         }
-        Figure figure = figureFactory.createFigure(type, points);
-        return figure;
+        return figureFactory.createFigure(type, points, color, name);
     }
 }

@@ -10,7 +10,8 @@ public class Line extends Figure {
         return points;
     }
 
-    Line(List<Point> points){
+    Line(List<Point> points, Color color, String name){
+        super(color, name);
         this.points = points;
     }
 

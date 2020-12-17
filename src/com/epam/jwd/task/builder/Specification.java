@@ -1,6 +1,7 @@
 package com.epam.jwd.task.builder;
 
 import com.epam.jwd.task.model.Color;
+import com.epam.jwd.task.model.Figure;
 
 public class Specification {
 
@@ -42,6 +43,10 @@ public class Specification {
                 '}';
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public static class Builder {
         private Color color;
         private String name;
@@ -71,6 +76,43 @@ public class Specification {
         public Specification build() {
             return new Specification(this.color, this.name, this.area, this.perimeter);
         }
+
+        //todo: think of logic
+        public <T extends Figure> Builder find(Class<T> figureClass) {
+            name = figureClass.getName();
+            return this;
+        }
+
+        public Builder withColor(Color color) {
+            this.color =  color;
+            return this;
+        }
+
+        public Builder withNameStartsWith(String name) {
+            this.name =  name;
+            return this;
+        }
+
+        public Builder withAreaGreaterThan(double area) {
+            this.area =  area;
+            return this;
+        }
+
+        public Builder withAreaLessThen(double area) {
+            this.area =  area;
+            return this;
+        }
+
+        public Builder withPerimeterGreaterThan(double perimeter) {
+            this.perimeter =  perimeter;
+            return this;
+        }
+
+        public Builder withPerimeterLessThan(double perimeter) {
+            this.perimeter =  perimeter;
+            return this;
+        }
+
 
     }
 }

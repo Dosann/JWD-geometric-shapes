@@ -10,7 +10,8 @@ public class MultiAngleFigure extends Figure {
         return points;
     }
 
-    MultiAngleFigure(List<Point> points) {
+    MultiAngleFigure(List<Point> points, Color color, String name) {
+        super(color, name);
         this.points = points;
     }
 
