@@ -7,14 +7,16 @@ import com.epam.jwd.task.strategy.impl.SquarePropertiesStrategy;
 import com.epam.jwd.task.strategy.impl.TrianglePropertiesStrategy;
 
 import java.util.List;
+import java.util.UUID;
 
 public abstract class Figure {
 
     private FigurePropertiesStrategy strategy;
-    private String figureColor;
+    private final UUID id;
 
     public Figure() {
         this.strategy = LinePropertiesStrategy.INSTANCE;
+        id = UUID.randomUUID();
     }
 
     public void setTriangleStrategy() {
@@ -29,6 +31,10 @@ public abstract class Figure {
         this.strategy = MultiAnglePropertiesStrategy.getInstance();
     }
 
+    public UUID getId() {
+        return id;
+    }
+
     public abstract List<Point> getPoints();
 
     public double calculateArea() {
@@ -41,13 +47,5 @@ public abstract class Figure {
 
     public boolean isFigureExist() {
         return strategy.isExist(getPoints());
-    }
-
-    public String getFigureColor() {
-        return figureColor;
-    }
-
-    public void setFigureColor(String figureColor) {
-        this.figureColor = figureColor;
     }
 }

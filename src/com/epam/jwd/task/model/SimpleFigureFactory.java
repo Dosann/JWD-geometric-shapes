@@ -21,7 +21,7 @@ public class SimpleFigureFactory implements FigureFactory {
             case "Square":
                 figure = new Square(points);
                 break;
-            case "Multi-angle":
+            case "MultiAngle":
                 figure = new MultiAngleFigure(points);
                 break;
             default:
