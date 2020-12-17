@@ -1,24 +1,30 @@
 package com.epam.jwd.task.service;
 
-import com.epam.jwd.task.builder.FigureCriterion;
+import com.epam.jwd.task.builder.Specification;
 import com.epam.jwd.task.exception.FigureException;
-import com.epam.jwd.task.factory.FigureFactory;
+import com.epam.jwd.task.model.Color;
 import com.epam.jwd.task.model.Figure;
 import com.epam.jwd.task.model.Point;
+import com.epam.jwd.task.storage.FigureStorage;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 public interface FigureCrud {
 
-    Figure create (FigureFactory figureFactory, String type, List<Point> points) throws FigureException;
-    List<Figure> multiCreate(int amountOfWantedFigures, FigureFactory figureFactory, String type, List<Point> points)
-            throws FigureException;
+    Figure createFigure (String type, List<Point> points, Color color, String name) throws FigureException;
+    List<Figure> multiCreateFigures (int amountOfWantedFigures, String type, List<Point> points,
+                                     Color color, String name) throws FigureException;
 
-    void save(Figure figure);
-    void delete(Figure figure);
-    Figure find(Figure figure);
-    void update(int index, Figure figure);
+    void saveFigure (List<Figure> figure);
+    default void saveFigure (Figure figure) {
+        FigureStorage.figuresInTheCache.add(figure);
+    }
 
-    Figure findById(int index);
-    List<Figure> findByCriterion(FigureCriterion figureCriterion);
+    void deleteFigure (Figure figure);
+    Optional<Figure> findFigure (Figure figure);
+    void updateFigure (Figure oldFigure, Figure newFigure);
+    Optional<Figure> findFigureById(UUID uuid);
+    List<Figure> findFigureBySpecification(Specification specification);
 }
