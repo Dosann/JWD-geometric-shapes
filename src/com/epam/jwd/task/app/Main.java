@@ -1,17 +1,19 @@
 package com.epam.jwd.task.app;
 
+import com.epam.jwd.task.builder.Specification;
 import com.epam.jwd.task.exception.FigureException;
-import com.epam.jwd.task.factory.ApplicationContext;
-import com.epam.jwd.task.factory.FigureFactory;
-import com.epam.jwd.task.logic.ReportAction;
-import com.epam.jwd.task.model.Point;
+import com.epam.jwd.task.model.Color;
 import com.epam.jwd.task.model.Figure;
-import com.epam.jwd.task.model.SimpleApplicationContext;
+import com.epam.jwd.task.model.Point;
+import com.epam.jwd.task.model.Square;
+import com.epam.jwd.task.service.impl.FigureCrudService;
+import com.epam.jwd.task.storage.FigureStorage;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.Level;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -23,7 +25,7 @@ public class Main {
     static {
 
         POINTS_FOR_LINE.add(new Point(0.1, -9.4));
-        POINTS_FOR_LINE.add(new Point(0.1, -9.4));
+        POINTS_FOR_LINE.add(new Point(0.1, 9.4));
     }
 
     private static final List<Point> POINTS_FOR_FIRST_TRIANGLE = new ArrayList<>();
@@ -69,72 +71,41 @@ public class Main {
 
     }
 
-    private static final ApplicationContext applicationContext = SimpleApplicationContext.INSTANCE;
-    private static final FigureFactory figureFactory = applicationContext.createFigureFactory();
-
-    private static void generateInfoAboutLines() {
-        List<Figure> lines = new ArrayList<>();
-
-        {
-            try {
-                lines.add(figureFactory.createFigure("Line", POINTS_FOR_LINE));
-
-            } catch (FigureException e) {
-                LOGGER.log(Level.ERROR, "Exception has been thrown:\n{}", e.toString());
-            }
-        }
-
-        ReportAction.printFigure(lines);
-    }
-
-    private static void generateInfoAboutTriangles() {
-        List<Figure> triangles = new ArrayList<>();
-
-        {
-            try {
-                triangles.add(figureFactory.createFigure("Triangle", POINTS_FOR_SECOND_TRIANGLE));
-                triangles.add(figureFactory.createFigure("Triangle", POINTS_FOR_FIRST_TRIANGLE));
-            } catch (FigureException e) {
-                LOGGER.log(Level.ERROR, "Exception has been thrown:\n{}", e.toString());
-            }
-        }
-
-        ReportAction.printFigure(triangles);
-    }
-
-    private static void generateInfoAboutSquares() {
-        List<Figure> squares = new ArrayList<>();
-
-        {
-            try {
-                squares.add(figureFactory.createFigure("Square", POINTS_FOR_SQUARE));
-            } catch (FigureException e) {
-                LOGGER.log(Level.ERROR, "Exception has been thrown:\n{}", e.toString());
-            }
-        }
-
-        ReportAction.printFigure(squares);
-    }
-
-    private static void generateInfoAboutMultiAngles() {
-        List<Figure> multiAngles = new ArrayList<>();
-
-        {
-            try {
-                multiAngles.add(figureFactory.createFigure("Multi-angle", POINTS_FOR_MULTI_ANGLE));
-            } catch (FigureException e) {
-                LOGGER.log(Level.ERROR, "Exception has been thrown:\n{}", e.toString());
-            }
-        }
-
-        ReportAction.printFigure(multiAngles);
-    }
-
     public static void main(String[] args) {
-        generateInfoAboutLines();
-        generateInfoAboutTriangles();
-        generateInfoAboutSquares();
-        generateInfoAboutMultiAngles();
+        testFigureCrudService();
+    }
+
+    private static void testFigureCrudService () {
+
+        FigureCrudService figureCrudService = FigureCrudService.INSTANCE;
+
+        try {
+            Figure square = figureCrudService.createFigure("Square", POINTS_FOR_SQUARE, Color.PURPLE, "ASquare");
+            Figure triangle1 = figureCrudService.createFigure("Triangle", POINTS_FOR_FIRST_TRIANGLE, Color.PURPLE, "ATriangle");
+            Figure triangle2 = figureCrudService.createFigure("Triangle", POINTS_FOR_SECOND_TRIANGLE, Color.BLUE, "BTriangle");
+            Figure multiangle = figureCrudService.createFigure("MultiAngle", POINTS_FOR_MULTI_ANGLE, Color.GREEN, "AMulti");
+
+            figureCrudService.saveFigure(square);
+            figureCrudService.saveFigure(Arrays.asList(triangle1, triangle2));
+
+
+            LOGGER.log(Level.INFO, "{}", figureCrudService.findFigureById(null));
+
+            Specification specification = Specification.builder()
+//                    .find(Square.class)
+                    .withAreaGreaterThan(0)
+                    .withColor(Color.PURPLE)
+                    .withNameStartsWith("A")
+                    .withPerimeterLessThan(50)
+                    .build();
+
+            LOGGER.log(Level.INFO, "Figures found by specification: {}",
+                    figureCrudService.findFigureByCriterion(specification));
+
+        } catch (FigureException e) {
+            LOGGER.log(Level.ERROR, "Exception occurred: {}", e.toString());
+        }
+
     }
 
 }
