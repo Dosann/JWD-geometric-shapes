@@ -26,5 +26,5 @@ public interface FigureCrud {
     Optional<Figure> findFigure (Figure figure);
     void updateFigure (Figure oldFigure, Figure newFigure);
     Optional<Figure> findFigureById(UUID uuid);
-    List<Figure> findFigureBySpecification(Specification specification);
+    List<Figure> findFigureByCriterion(Specification specification);
 }

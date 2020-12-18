@@ -78,23 +78,43 @@ public enum FigureCrudService implements FigureCrud {
                 .findFirst();
     }
 
+
     @Override
-    public List<Figure> findFigureBySpecification(Specification specification) {
+    public List<Figure> findFigureByCriterion(Specification specification) {
         if(specification == null) {
             return FigureStorage.figuresInTheCache;
         }
-        return FigureStorage.figuresInTheCache.
-                stream().
-                filter(figures -> checkForCriterion(figures, specification)).
-                collect(Collectors.toList());
+
+        return FigureStorage.figuresInTheCache
+                .stream()
+                .filter(figures -> (
+                        checkWithArea(figures, specification) &&
+                        checkWithPerimeter(figures, specification) &&
+                        checkWithColor(figures, specification) &&
+                        checkWithName(figures, specification)))
+                .collect(Collectors.toList());
     }
 
-
-    //todo: think of logic
-    private boolean checkForCriterion(Figure figure, Specification specification) {
-        return figure.getColor().equals(specification.getColor()) &&
-                figure.getName().equals(specification.getName()) &&
-                figure.calculateArea() == specification.getArea() &&
-                figure.calculatePerimeter() == specification.getPerimeter();
+    private boolean checkWithArea (Figure figure, Specification specification) {
+        return specification.getAreaIndex() == 1 ? figure.calculateArea() > specification.getArea() :
+                (specification.getAreaIndex() == -1 ? figure.calculateArea() < specification.getArea() :
+                        figure.calculateArea() == specification.getArea());
     }
+
+    private boolean checkWithPerimeter (Figure figure, Specification specification) {
+        return specification.getPerimeterIndex() == 1 ? figure.calculatePerimeter() > specification.getPerimeter() :
+                (specification.getPerimeterIndex() == -1 ? figure.calculatePerimeter() < specification.getPerimeter() :
+                        figure.calculatePerimeter() == specification.getPerimeter());
+    }
+
+    private boolean checkWithColor (Figure figure, Specification specification) {
+        return figure.getColor() == specification.getColor();
+    }
+
+    private boolean checkWithName (Figure figure, Specification specification) {
+        return specification.getNameIndex() == 1 ? figure.getName().startsWith(specification.getName()) :
+                (specification.getNameIndex() == -1 ? figure.getName().endsWith(specification.getName()) :
+                        figure.getName().equals(specification.getName()));
+    }
+
 }
