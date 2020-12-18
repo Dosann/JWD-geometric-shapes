@@ -4,10 +4,10 @@ import com.epam.jwd.task.builder.Specification;
 import com.epam.jwd.task.exception.FigureException;
 import com.epam.jwd.task.model.Color;
 import com.epam.jwd.task.model.Figure;
+import com.epam.jwd.task.model.FigureType;
 import com.epam.jwd.task.model.Point;
 import com.epam.jwd.task.model.Square;
 import com.epam.jwd.task.service.impl.FigureCrudService;
-import com.epam.jwd.task.storage.FigureStorage;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -80,10 +80,18 @@ public class Main {
         FigureCrudService figureCrudService = FigureCrudService.INSTANCE;
 
         try {
-            Figure square = figureCrudService.createFigure("Square", POINTS_FOR_SQUARE, Color.PURPLE, "ASquare");
-            Figure triangle1 = figureCrudService.createFigure("Triangle", POINTS_FOR_FIRST_TRIANGLE, Color.PURPLE, "ATriangle");
-            Figure triangle2 = figureCrudService.createFigure("Triangle", POINTS_FOR_SECOND_TRIANGLE, Color.BLUE, "BTriangle");
-            Figure multiangle = figureCrudService.createFigure("MultiAngle", POINTS_FOR_MULTI_ANGLE, Color.GREEN, "AMulti");
+
+            Figure square = figureCrudService.createFigure(FigureType.SQUARE, POINTS_FOR_SQUARE,
+                    Color.PURPLE, "A square");
+
+            Figure triangle1 = figureCrudService.createFigure(FigureType.TRIANGLE, POINTS_FOR_FIRST_TRIANGLE,
+                    Color.PURPLE, "ATriangle");
+
+            Figure triangle2 = figureCrudService.createFigure(FigureType.TRIANGLE, POINTS_FOR_SECOND_TRIANGLE,
+                    Color.BLUE, "B Triangle");
+
+            Figure multiangle = figureCrudService.createFigure(FigureType.MULTIANGLE, POINTS_FOR_MULTI_ANGLE,
+                    Color.GREEN, "AMulti");
 
             figureCrudService.saveFigure(square);
             figureCrudService.saveFigure(Arrays.asList(triangle1, triangle2));
@@ -92,10 +100,8 @@ public class Main {
             LOGGER.log(Level.INFO, "{}", figureCrudService.findFigureById(null));
 
             Specification specification = Specification.builder()
-//                    .find(Square.class)
-                    .withAreaGreaterThan(0)
+                    .withAreaGreaterThan(3)
                     .withColor(Color.PURPLE)
-                    .withNameStartsWith("A")
                     .withPerimeterLessThan(50)
                     .build();
 
