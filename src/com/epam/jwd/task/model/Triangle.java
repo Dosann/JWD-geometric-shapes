@@ -11,8 +11,8 @@ public class Triangle extends Figure {
     }
 
     Triangle(List<Point> points, Color color, String name) {
-        super(color, name);
-       this.points = points;
+        super(FigureType.TRIANGLE, color, name);
+        this.points = points;
     }
 
     @Override

@@ -13,13 +13,14 @@ public abstract class Figure {
 
     private FigurePropertiesStrategy strategy;
     private final UUID id;
-    private Color color;
-    private String name;
+    private final FigureType type;
+    private final Color color;
+    private final String name;
 
-
-    public Figure(Color color, String name) {
+    public Figure(FigureType type, Color color, String name) {
         this.strategy = LinePropertiesStrategy.INSTANCE;
         id = UUID.randomUUID();
+        this.type = type;
         this.color = color;
         this.name = name;
     }
@@ -40,6 +41,10 @@ public abstract class Figure {
 
     public UUID getId() {
         return id;
+    }
+
+    public FigureType getType() {
+        return type;
     }
 
     public Color getColor() {

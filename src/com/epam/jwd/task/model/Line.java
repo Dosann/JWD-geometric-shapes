@@ -11,7 +11,7 @@ public class Line extends Figure {
     }
 
     Line(List<Point> points, Color color, String name){
-        super(color, name);
+        super(FigureType.LINE, color, name);
         this.points = points;
     }
 

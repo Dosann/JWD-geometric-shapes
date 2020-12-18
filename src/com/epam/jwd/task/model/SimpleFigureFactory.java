@@ -8,20 +8,20 @@ import java.util.List;
 public class SimpleFigureFactory implements FigureFactory {
 
     @Override
-    public Figure createFigure(String type, List<Point> points, Color color, String name) throws FigureException{
+    public Figure createFigure(FigureType type, List<Point> points, Color color, String name) throws FigureException{
 
         Figure figure;
         switch (type) {
-            case "Line":
+            case LINE:
                 figure = new Line(points, color, name);
                 break;
-            case "Triangle":
+            case TRIANGLE:
                 figure = new Triangle(points, color, name);
                 break;
-            case "Square":
+            case SQUARE:
                 figure = new Square(points, color, name);
                 break;
-            case "MultiAngle":
+            case MULTIANGLE:
                 figure = new MultiAngleFigure(points, color, name);
                 break;
             default:

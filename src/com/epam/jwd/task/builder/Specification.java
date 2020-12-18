@@ -1,10 +1,11 @@
 package com.epam.jwd.task.builder;
 
 import com.epam.jwd.task.model.Color;
-import com.epam.jwd.task.model.Figure;
+import com.epam.jwd.task.model.FigureType;
 
 public class Specification {
 
+    private final FigureType type;
     private final Color color;
     private final String name;
     private final double area;
@@ -21,11 +22,16 @@ public class Specification {
         return this;
     }
 
-    public Specification(Color color, String name, double area, double perimeter) {
+    public Specification(FigureType type, Color color, String name, double area, double perimeter) {
+        this.type = type;
         this.color = color;
         this.name = name;
         this.area = area;
         this.perimeter = perimeter;
+    }
+
+    public FigureType getType() {
+        return type;
     }
 
     public Color getColor() {
@@ -59,6 +65,7 @@ public class Specification {
     @Override
     public String toString() {
         return "Specification{" +
+                "type=" + type +
                 "color=" + color +
                 ", name='" + name + '\'' +
                 ", area=" + area +
@@ -71,6 +78,7 @@ public class Specification {
     }
 
     public static class Builder {
+        private FigureType type;
         private Color color;
         private String name;
         private double area;
@@ -80,35 +88,34 @@ public class Specification {
         private int areaIndex;
         private int perimeterIndex;
 
+        public Builder withType(FigureType type) {
+            this.type = type;
+            return this;
+        }
+
         public Builder withColor(Color color) {
-            this.color =  color;
+            this.color = color;
             return this;
         }
 
         public Builder withNameEqualsTo(String name) {
-            this.name =  name;
+            this.name = name;
             return this;
         }
 
         public Builder withAreaEqualsTo(double area) {
-            this.area =  area;
+            this.area = area;
             return this;
         }
 
         public Builder withPerimeterEqualsTo(double perimeter) {
-            this.perimeter =  perimeter;
+            this.perimeter = perimeter;
             return this;
         }
 
         public Specification build() {
-            return new Specification(this.color, this.name, this.area, this.perimeter)
+            return new Specification(this.type, this.color, this.name, this.area, this.perimeter)
                     .setUpIndex(this.nameIndex, this.areaIndex, this.perimeterIndex);
-        }
-
-        //todo: think of logic
-        public <T extends Figure> Builder find(Class<T> figureClass) {
-//            name = figureClass.getName();
-            return this;
         }
 
         public Builder withNameStartsWith(String name) {

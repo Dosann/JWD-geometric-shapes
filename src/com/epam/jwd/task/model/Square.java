@@ -11,7 +11,7 @@ public class Square extends Figure {
     }
 
     Square(List<Point> points, Color color, String name) {
-        super(color, name);
+        super(FigureType.SQUARE, color, name);
         this.points = points;
     }
 
