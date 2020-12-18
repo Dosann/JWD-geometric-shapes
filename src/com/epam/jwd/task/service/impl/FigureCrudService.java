@@ -6,6 +6,7 @@ import com.epam.jwd.task.factory.ApplicationContext;
 import com.epam.jwd.task.factory.FigureFactory;
 import com.epam.jwd.task.model.Color;
 import com.epam.jwd.task.model.Figure;
+import com.epam.jwd.task.model.FigureType;
 import com.epam.jwd.task.model.Point;
 import com.epam.jwd.task.model.SimpleApplicationContext;
 import com.epam.jwd.task.service.FigureCrud;
@@ -24,12 +25,12 @@ public enum FigureCrudService implements FigureCrud {
     private static final FigureFactory figureFactory = applicationContext.createFigureFactory();
 
     @Override
-    public Figure createFigure (String type, List<Point> points, Color color, String name) throws FigureException {
+    public Figure createFigure (FigureType type, List<Point> points, Color color, String name) throws FigureException {
         return figureFactory.createFigure(type, points, color, name);
     }
 
     @Override
-    public List<Figure> multiCreateFigures (int amountOfWantedFigures, String type, List<Point> points,
+    public List<Figure> multiCreateFigures (int amountOfWantedFigures, FigureType type, List<Point> points,
                                             Color color, String name) throws FigureException {
         List<Figure> figures = new ArrayList<>();
         for (int i = 0; i < amountOfWantedFigures; i++) {
@@ -87,34 +88,41 @@ public enum FigureCrudService implements FigureCrud {
 
         return FigureStorage.figuresInTheCache
                 .stream()
-                .filter(figures -> (
-                        checkWithArea(figures, specification) &&
-                        checkWithPerimeter(figures, specification) &&
-                        checkWithColor(figures, specification) &&
-                        checkWithName(figures, specification)))
+                .filter(figures -> checkWithArea(figures, specification) &&
+                                checkWithPerimeter(figures, specification) &&
+                                checkWithType(figures, specification) &&
+                                checkWithColor(figures, specification) &&
+                                checkWithName(figures, specification))
                 .collect(Collectors.toList());
     }
 
     private boolean checkWithArea (Figure figure, Specification specification) {
-        return specification.getAreaIndex() == 1 ? figure.calculateArea() > specification.getArea() :
+        return specification.getArea() == 0 ||
+                (specification.getAreaIndex() == 1 ? figure.calculateArea() > specification.getArea() :
                 (specification.getAreaIndex() == -1 ? figure.calculateArea() < specification.getArea() :
-                        figure.calculateArea() == specification.getArea());
+                        figure.calculateArea() == specification.getArea()));
     }
 
     private boolean checkWithPerimeter (Figure figure, Specification specification) {
-        return specification.getPerimeterIndex() == 1 ? figure.calculatePerimeter() > specification.getPerimeter() :
+        return specification.getPerimeter() == 0 ||
+                (specification.getPerimeterIndex() == 1 ? figure.calculatePerimeter() > specification.getPerimeter() :
                 (specification.getPerimeterIndex() == -1 ? figure.calculatePerimeter() < specification.getPerimeter() :
-                        figure.calculatePerimeter() == specification.getPerimeter());
+                        figure.calculatePerimeter() == specification.getPerimeter()));
+    }
+
+    private boolean checkWithType (Figure figure, Specification specification) {
+        return specification.getType() == null || figure.getType() == specification.getType();
     }
 
     private boolean checkWithColor (Figure figure, Specification specification) {
-        return figure.getColor() == specification.getColor();
+        return specification.getColor() == null || figure.getColor() == specification.getColor();
     }
 
     private boolean checkWithName (Figure figure, Specification specification) {
-        return specification.getNameIndex() == 1 ? figure.getName().startsWith(specification.getName()) :
+        return specification.getName() == null ||
+                (specification.getNameIndex() == 1 ? figure.getName().startsWith(specification.getName()) :
                 (specification.getNameIndex() == -1 ? figure.getName().endsWith(specification.getName()) :
-                        figure.getName().equals(specification.getName()));
+                        figure.getName().equals(specification.getName())));
     }
 
 }

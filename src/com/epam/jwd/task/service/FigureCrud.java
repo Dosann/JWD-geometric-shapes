@@ -4,6 +4,7 @@ import com.epam.jwd.task.builder.Specification;
 import com.epam.jwd.task.exception.FigureException;
 import com.epam.jwd.task.model.Color;
 import com.epam.jwd.task.model.Figure;
+import com.epam.jwd.task.model.FigureType;
 import com.epam.jwd.task.model.Point;
 import com.epam.jwd.task.storage.FigureStorage;
 
@@ -13,8 +14,8 @@ import java.util.UUID;
 
 public interface FigureCrud {
 
-    Figure createFigure (String type, List<Point> points, Color color, String name) throws FigureException;
-    List<Figure> multiCreateFigures (int amountOfWantedFigures, String type, List<Point> points,
+    Figure createFigure (FigureType type, List<Point> points, Color color, String name) throws FigureException;
+    List<Figure> multiCreateFigures (int amountOfWantedFigures, FigureType type, List<Point> points,
                                      Color color, String name) throws FigureException;
 
     void saveFigure (List<Figure> figure);
