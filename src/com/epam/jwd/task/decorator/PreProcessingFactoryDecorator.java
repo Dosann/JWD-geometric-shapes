@@ -21,10 +21,6 @@ public class PreProcessingFactoryDecorator implements FigureFactory {
         preProcessors.add(new FigureExistencePreProcessor());
     }
 
-    public PreProcessingFactoryDecorator(FigureFactory figureFactory) {
-        this.figureFactory = figureFactory;
-    }
-
     @Override
     public Figure createFigure(FigureType type, List<Point> points, Color color, String name) throws FigureException {
         for (FigurePreProcessor preProcessor : preProcessors) {
@@ -32,4 +28,9 @@ public class PreProcessingFactoryDecorator implements FigureFactory {
         }
         return figureFactory.createFigure(type, points, color, name);
     }
+
+    public PreProcessingFactoryDecorator(FigureFactory figureFactory) {
+        this.figureFactory = figureFactory;
+    }
+
 }

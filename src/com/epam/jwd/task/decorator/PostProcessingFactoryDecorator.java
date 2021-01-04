@@ -21,10 +21,6 @@ public class PostProcessingFactoryDecorator implements FigureFactory {
         postProcessors.add(new FigureExistencePostProcessor());
     }
 
-    public PostProcessingFactoryDecorator(FigureFactory figureFactory) {
-        this.figureFactory = figureFactory;
-    }
-
     @Override
     public Figure createFigure(FigureType type, List<Point> points, Color color, String name) throws FigureException {
         Figure figure = figureFactory.createFigure(type, points, color, name);
@@ -32,5 +28,9 @@ public class PostProcessingFactoryDecorator implements FigureFactory {
             figure = postProcessor.process(figure);
         }
         return figure;
+    }
+
+    public PostProcessingFactoryDecorator(FigureFactory figureFactory) {
+        this.figureFactory = figureFactory;
     }
 }
