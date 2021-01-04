@@ -4,7 +4,7 @@
 ### Learn how to 
 * implement patterns: Strategy, Singleton, Factory, Decorator, Builder
 * handle exceptions
-* work with Collections 
+* work with collections 
 * use Stream API, Optional
 
 ## Process
