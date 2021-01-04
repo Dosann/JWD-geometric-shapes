@@ -22,7 +22,7 @@ public class Specification {
         return this;
     }
 
-    public Specification(FigureType type, Color color, String name, double area, double perimeter) {
+    private Specification(FigureType type, Color color, String name, double area, double perimeter) {
         this.type = type;
         this.color = color;
         this.name = name;
