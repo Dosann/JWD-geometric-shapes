@@ -2,11 +2,11 @@ package com.epam.jwd.task.app;
 
 import com.epam.jwd.task.builder.Specification;
 import com.epam.jwd.task.exception.FigureException;
+import com.epam.jwd.task.logic.ReportAction;
 import com.epam.jwd.task.model.Color;
 import com.epam.jwd.task.model.Figure;
 import com.epam.jwd.task.model.FigureType;
 import com.epam.jwd.task.model.Point;
-import com.epam.jwd.task.model.Square;
 import com.epam.jwd.task.service.impl.FigureCrudService;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -80,7 +80,6 @@ public class Main {
         FigureCrudService figureCrudService = FigureCrudService.INSTANCE;
 
         try {
-
             Figure square = figureCrudService.createFigure(FigureType.SQUARE, POINTS_FOR_SQUARE,
                     Color.PURPLE, "A square");
 
@@ -90,17 +89,16 @@ public class Main {
             Figure triangle2 = figureCrudService.createFigure(FigureType.TRIANGLE, POINTS_FOR_SECOND_TRIANGLE,
                     Color.BLUE, "B Triangle");
 
-            Figure multiangle = figureCrudService.createFigure(FigureType.MULTIANGLE, POINTS_FOR_MULTI_ANGLE,
-                    Color.GREEN, "AMulti");
+            ReportAction.printFigure(Arrays.asList(square, triangle1, triangle2));
 
             figureCrudService.saveFigure(square);
             figureCrudService.saveFigure(Arrays.asList(triangle1, triangle2));
 
-
-            LOGGER.log(Level.INFO, "{}", figureCrudService.findFigureById(null));
+            LOGGER.log(Level.INFO, "Finding figure by specified id... {}",
+                    figureCrudService.findFigureById(null));
 
             Specification specification = Specification.builder()
-                    .withAreaGreaterThan(3)
+                    .withAreaGreaterThan(6)
                     .withColor(Color.PURPLE)
                     .withPerimeterLessThan(50)
                     .build();
@@ -111,7 +109,5 @@ public class Main {
         } catch (FigureException e) {
             LOGGER.log(Level.ERROR, "Exception occurred: {}", e.toString());
         }
-
     }
-
 }
