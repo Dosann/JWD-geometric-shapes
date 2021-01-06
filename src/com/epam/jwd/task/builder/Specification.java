@@ -113,13 +113,8 @@ public class Specification {
             return this;
         }
 
-        public Specification build() {
-            return new Specification(this.type, this.color, this.name, this.area, this.perimeter)
-                    .setUpIndex(this.nameIndex, this.areaIndex, this.perimeterIndex);
-        }
-
         public Builder withNameStartsWith(String name) {
-           this.nameIndex = 1;
+            this.nameIndex = 1;
             return withNameEqualsTo(name);
         }
 
@@ -144,8 +139,13 @@ public class Specification {
         }
 
         public Builder withPerimeterLessThan(double perimeter) {
-           this.perimeterIndex = -1;
-           return withPerimeterEqualsTo(perimeter);
+            this.perimeterIndex = -1;
+            return withPerimeterEqualsTo(perimeter);
+        }
+
+        public Specification build() {
+            return new Specification(this.type, this.color, this.name, this.area, this.perimeter)
+                    .setUpIndex(this.nameIndex, this.areaIndex, this.perimeterIndex);
         }
     }
 }
