@@ -15,17 +15,23 @@ import java.util.UUID;
 public interface FigureCrud {
 
     Figure createFigure (FigureType type, List<Point> points, Color color, String name) throws FigureException;
+
     List<Figure> multiCreateFigures (int amountOfWantedFigures, FigureType type, List<Point> points,
                                      Color color, String name) throws FigureException;
 
     void saveFigure (List<Figure> figure);
+
     default void saveFigure (Figure figure) {
         FigureStorage.figuresInTheCache.add(figure);
     }
 
     void deleteFigure (Figure figure);
+
     Optional<Figure> findFigure (Figure figure);
+
     void updateFigure (Figure oldFigure, Figure newFigure);
+
     Optional<Figure> findFigureById(UUID uuid);
+
     List<Figure> findFigureByCriterion(Specification specification);
 }
