@@ -33,5 +33,5 @@ public interface FigureCrud {
 
     Optional<Figure> findFigureById(UUID uuid);
 
-    List<Figure> findFigureByCriterion(Specification specification);
+    List<Figure> findFigureByCriteria(Specification specification);
 }

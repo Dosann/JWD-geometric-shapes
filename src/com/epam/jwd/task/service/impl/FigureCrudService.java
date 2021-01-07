@@ -81,7 +81,7 @@ public enum FigureCrudService implements FigureCrud {
 
 
     @Override
-    public List<Figure> findFigureByCriterion(Specification specification) {
+    public List<Figure> findFigureByCriteria(Specification specification) {
         if(specification == null) {
             return FigureStorage.figuresInTheCache;
         }

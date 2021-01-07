@@ -104,7 +104,7 @@ public class Main {
                     .build();
 
             LOGGER.log(Level.INFO, "Figures found by specification: {}",
-                    figureCrudService.findFigureByCriterion(specification));
+                    figureCrudService.findFigureByCriteria(specification));
 
         } catch (FigureException e) {
             LOGGER.log(Level.ERROR, "Exception occurred: {}", e.toString());
